@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:XPBars"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid DataContext="{StaticResource mvm}">
+    <Grid DataContext="{StaticResource mvm}" VerticalAlignment="Stretch">
         <!--<Frame x:Name="fInsert" Content="Frame" HorizontalAlignment="Left" Height="100" Margin="209,108,0,0" VerticalAlignment="Top" Width="375"/>-->
-        <Frame x:Name="fInsert" Width="600" Height="40"/>
+        <!--<Frame x:Name="fInsert" Width="600" Height="40"/>
         <TextBox Text="{Binding Text}" HorizontalAlignment="Left" Height="23" Margin="463,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ProgressBar Tag="Yikes" Value="34" Opacity="0.8" HorizontalAlignment="Left" Height="27" Margin="244,66,0,0" VerticalAlignment="Top" Width="339"/>
+        <ProgressBar Tag="Yikes" Value="34" Opacity="0.8" HorizontalAlignment="Left" Height="27" Margin="244,66,0,0" VerticalAlignment="Top" Width="339"/>-->
         <!--<Expander Header="Expander" HorizontalAlignment="Left" Height="100" Margin="279,179,0,0" VerticalAlignment="Top" Width="100">
             <Grid Background="#FFE5E5E5"/>
         </Expander>
@@ -19,5 +19,40 @@
             <ComboBoxItem Tag="test" Content="yikes"></ComboBoxItem>
             <ComboBoxItem Tag="yikes" Content="test1"></ComboBoxItem>
         </ComboBox>-->
+        <TreeView Margin="5" ItemsSource="{Binding LXPBars}" VerticalAlignment="Stretch">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Subbars}">
+                    <!--<Border Margin="3" BorderThickness="1" CornerRadius="3" Width="400" Height="50">-->
+                    <Grid HorizontalAlignment="Stretch" Margin="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Description}" HorizontalAlignment="Stretch"/>
+                        <Grid Grid.Row="1">
+                            <ProgressBar x:Name="pbList" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="500" HorizontalAlignment="Stretch"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock.Text>
+                                    <!--<MultiBinding StringFormat="{}UserLvl: {0}/{1}">-->
+                                    <MultiBinding StringFormat="{}{0}/{1}">
+                                        <Binding Path="Value" ElementName="pbList"/>
+                                        <Binding Path="Maximum" ElementName="pbList"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </Grid>
+                        <TextBlock Text="{Binding Level}" Grid.Row="1" Grid.Column="1" Padding="5"/>
+                        <Expander Grid.Row="2" Header="Insert" Visibility="Collapsed">
+                        </Expander>
+                    </Grid>
+                    <!--</Border>-->
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
     </Grid>
 </Window>

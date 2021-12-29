@@ -28,6 +28,9 @@ Alle unterleisten: andere ansicht
             <TextBox x:Name="tbDescription" Grid.Column="2"/>
             <Button x:Name="btnAdd" Grid.Column="3"/>
         </Grid>
+		
+sortiersystem: alphabetisch (a-z & z-a) -> zum schneller finden
+sortiersystem: value -> aufwärts und abwärts
 
 references:
 https://stackoverflow.com/questions/3529928/how-do-i-put-text-on-progressbar/53850764

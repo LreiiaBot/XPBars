@@ -14,8 +14,13 @@ namespace XPBars
             InitializeComponent();
             Mvm = (MainViewModel)FindResource("mvm");
 
-            Page insert = new Pages.InsertPage();
-            fInsert.Navigate(insert);
+            //Page insert = new Pages.InsertPage();
+            //fInsert.Navigate(insert);
+        }
+
+        private void Expander_Collapsed(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

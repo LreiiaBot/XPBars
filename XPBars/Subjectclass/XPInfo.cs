@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace XPBars
 {
-    class XPInfo
+    public class XPInfo
     {
-        public int CurrentValue { get; } // within the current level
-        public int MaxValue { get; } // of the current level
+        public int CurrentValue { get; set; } // within the current level; DONT USE SETTER
+        public int MaxValue { get; set; } // of the current level; DONT USE SETTER
         public string Description { get; set; }
         public int Level { get; set; }
         public bool Done { get; set; }
+        public ObservableCollection<Insertion> Protocol { get; set; } = new ObservableCollection<Insertion>();
 
         public XPInfo()
         {
@@ -36,6 +38,7 @@ namespace XPBars
 
         public void AddValue(Insertion insertion)
         {
+            Protocol.Add(insertion);
             List<int> values = OrbsToValues(insertion.Value, insertion.Weight);
             // calculate sum
         }
