@@ -18,7 +18,7 @@
             </Grid.ColumnDefinitions>
             <TextBox x:Name="tbCount" TextAlignment="Center" VerticalContentAlignment="Center"/>
             <ComboBox Name="cbWeight" Grid.Column="1"/>
-            <TextBox x:Name="tbDescription" Grid.Column="2" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="tbDescription" Text="{Binding Abc}" Grid.Column="2" VerticalContentAlignment="Center"/>
             <Button Content="+" x:Name="btnAdd" Grid.Column="3"/>
         </Grid>
     </Grid>

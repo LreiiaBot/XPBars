@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace XPBars
 {
-    class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         // Declare the PropertyChanged event
         public event PropertyChangedEventHandler PropertyChanged;

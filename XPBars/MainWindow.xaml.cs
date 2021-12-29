@@ -8,9 +8,11 @@ namespace XPBars
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainViewModel Mvm { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            Mvm = (MainViewModel)FindResource("mvm");
 
             Page insert = new Pages.InsertPage();
             fInsert.Navigate(insert);

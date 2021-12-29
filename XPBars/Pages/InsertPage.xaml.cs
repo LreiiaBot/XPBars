@@ -23,6 +23,11 @@ namespace XPBars.Pages
         public InsertPage()
         {
             InitializeComponent();
+            this.DataContext = (MainViewModel)FindResource("mvm");
+
+            // determine possible values for orbs
+            cbWeight.ItemsSource = Enum.GetValues(typeof(XPWeight));
+            cbWeight.SelectedIndex = 0;
         }
     }
 }
