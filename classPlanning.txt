@@ -1,0 +1,10 @@
+Quest
+	
+	value       : int
+	difficulty  : enum (
+	description : string
+	done        : bool
+	
+XPBar
+	parentbar/subbars? bi?
+	
