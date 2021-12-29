@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Expander Header="Expander" HorizontalAlignment="Left" Height="100" Margin="279,179,0,0" VerticalAlignment="Top" Width="100">
+            <Grid Background="#FFE5E5E5"/>
+        </Expander>
+        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="184,75,0,0" VerticalAlignment="Top" Value="50" Width="100"/>
+        <ComboBox HorizontalAlignment="Left" Margin="224,204,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Tag="test" Content="yikes"></ComboBoxItem>
+            <ComboBoxItem Tag="yikes" Content="test1"></ComboBoxItem>
+        </ComboBox>
     </Grid>
 </Window>
