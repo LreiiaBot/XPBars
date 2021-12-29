@@ -6,14 +6,18 @@
         xmlns:local="clr-namespace:XPBars"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Expander Header="Expander" HorizontalAlignment="Left" Height="100" Margin="279,179,0,0" VerticalAlignment="Top" Width="100">
+    <Grid DataContext="{StaticResource mvm}">
+        <!--<Frame x:Name="fInsert" Content="Frame" HorizontalAlignment="Left" Height="100" Margin="209,108,0,0" VerticalAlignment="Top" Width="375"/>-->
+        <Frame x:Name="fInsert" Width="600" Height="40"/>
+        <TextBox Text="{Binding Text}" HorizontalAlignment="Left" Height="23" Margin="463,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ProgressBar Tag="Yikes" Value="34" Opacity="0.8" HorizontalAlignment="Left" Height="27" Margin="244,66,0,0" VerticalAlignment="Top" Width="339"/>
+        <!--<Expander Header="Expander" HorizontalAlignment="Left" Height="100" Margin="279,179,0,0" VerticalAlignment="Top" Width="100">
             <Grid Background="#FFE5E5E5"/>
         </Expander>
         <ProgressBar HorizontalAlignment="Left" Height="10" Margin="184,75,0,0" VerticalAlignment="Top" Value="50" Width="100"/>
         <ComboBox HorizontalAlignment="Left" Margin="224,204,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Tag="test" Content="yikes"></ComboBoxItem>
             <ComboBoxItem Tag="yikes" Content="test1"></ComboBoxItem>
-        </ComboBox>
+        </ComboBox>-->
     </Grid>
 </Window>

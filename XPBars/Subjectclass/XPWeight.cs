@@ -5,6 +5,7 @@
         Small,
         Medium,
         Great,
-        Big
+        Big,
+        Large
     }
 }

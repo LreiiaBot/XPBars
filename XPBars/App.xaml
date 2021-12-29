@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:XPBars"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <local:MainViewModel x:Key="mvm"/>
     </Application.Resources>
 </Application>

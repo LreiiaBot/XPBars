@@ -11,3 +11,23 @@ XPBar : XPInfo
 	parentbar   : XPBar
 	subbars     : List<XPBar>
 	
+	
+Oberste Leiste: totale ansicht
+
+Alle unterleisten: andere ansicht
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="tbCount"/>
+            <ComboBox Name="cbWeight" Grid.Column="1"/>
+            <TextBox x:Name="tbDescription" Grid.Column="2"/>
+            <Button x:Name="btnAdd" Grid.Column="3"/>
+        </Grid>
+
+references:
+https://stackoverflow.com/questions/3529928/how-do-i-put-text-on-progressbar/53850764
