@@ -1,10 +1,13 @@
-Quest
-	
+XPInfo
 	value       : int
-	difficulty  : enum (
+	difficulty  : enum (orbs)
 	description : string
 	done        : bool
+
+Quest : XPInfo
+	targetbar   : XPBar
 	
-XPBar
-	parentbar/subbars? bi?
+XPBar : XPInfo
+	parentbar   : XPBar
+	subbars     : List<XPBar>
 	
