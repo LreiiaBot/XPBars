@@ -76,6 +76,19 @@ namespace XPBars
                 blue = 255;
             }
 
+            if (red < 0)
+            {
+                red = 0;
+            }
+            if (green < 0)
+            {
+                green = 0;
+            }
+            if (blue < 0)
+            {
+                blue = 0;
+            }
+
             // 0-50 -> from ? to 255(big influence - 5) 255(small influece - 2) 5$0$
 
             xpBar.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, (byte)red, (byte)green, (byte)blue));
