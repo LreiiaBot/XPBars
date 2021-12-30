@@ -50,7 +50,7 @@ namespace XPBars
             {
                 // 200 to 1000
                 // from 255, 0, 0 to 0, 0, 0
-                red = (100 - ((newValue - 200) / 800) * 100) * 255;
+                red = (int)((1.0 - (((double)newValue - 200.0) / 800.0)) * 255.0); // linear gradient using percentage
                 green = 0;
                 blue = 0;
             }
