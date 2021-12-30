@@ -34,15 +34,16 @@ namespace XPBars
             if (newValue < 50)
             {
                 red = 5 + 5 * newValue;
-                green = 155 + 2 * newValue;
-                blue = 80; // maybe change a little bit play around find best
+                //green = 155 + 2 * newValue;
+                green = 205 + 1 * newValue;
+                blue = 90; // maybe change a little bit play around find best
             }
             else if (newValue < 200)
             {
                 // level 50 - 199
                 // from 255, 255, 80 -> 255, 0, 0
                 red = 255;
-                double greenCalc = 255 - 1.275 * newValue + ((200 - newValue) * 4.925);
+                double greenCalc = 255.0 - 1.275 * newValue + ((200.0 - newValue) * 4.925);
                 green = (int)greenCalc;
                 blue = 0;
             }
