@@ -7,62 +7,77 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace XPBars
 {
     class XPBarControl : System.Windows.Controls.ProgressBar
     {
-        public static readonly DependencyProperty TextDependencyProperty = DependencyProperty.Register("Text", typeof(string), typeof(XPBarControl), new FrameworkPropertyMetadata(String.Empty, new PropertyChangedCallback(TextPropertyChanged)));
+        public static readonly DependencyProperty LevelDependencyProperty = DependencyProperty.Register("Level", typeof(int), typeof(XPBarControl), new FrameworkPropertyMetadata(0, new PropertyChangedCallback(LevelPropertyChanged)));
 
 
-        public string Text
+        public string Level
         {
-            get { return (string)GetValue(TextDependencyProperty); }
-            set { SetValue(TextDependencyProperty, value); }
+            get { return (string)GetValue(LevelDependencyProperty); }
+            set { SetValue(LevelDependencyProperty, value); }
         }
 
-        static void TextPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+        static void LevelPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
             XPBarControl xpBar = (XPBarControl)sender;
+            int newValue = (int)args.NewValue;
+            int red = 40;
+            int green = 120 + newValue * 4;
+            int blue = 80;
+
+            if (newValue < 50)
+            {
+                red = 5 + 5 * newValue;
+                green = 155 + 2 * newValue;
+                blue = 80; // maybe change a little bit play around find best
+            }
+            else if (newValue < 200)
+            {
+                // level 50 - 199
+                // from 255, 255, 80 -> 255, 0, 0
+                red = 255;
+                double greenCalc = 255 - 1.275 * newValue + ((200 - newValue) * 4.925);
+                green = (int)greenCalc;
+                blue = 0;
+            }
+            else if (newValue < 1000)
+            {
+                // 200 to 1000
+                // from 255, 0, 0 to 0, 0, 0
+                red = (100 - ((newValue - 200) / 800) * 100) * 255;
+                green = 0;
+                blue = 0;
+            }
+            else
+            {
+                red = 0;
+                green = 0;
+                blue = 0;
+            }
+
+            // for safety if any value is exceeds byte -> set it to max
+            if (red > 255)
+            {
+                red = 255;
+            }
+            if (green > 255)
+            {
+                green = 255;
+            }
+            if (blue > 255)
+            {
+                blue = 255;
+            }
+
+            // 0-50 -> from ? to 255(big influence - 5) 255(small influece - 2) 5$0$
+
+            xpBar.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, (byte)red, (byte)green, (byte)blue));
         }
-
-        //public XPBar Info { get; set; }
-        public XPBarControl()
-        {
-            // Modify the ControlStyles flags
-            //http://msdn.microsoft.com/en-us/library/system.windows.forms.controlstyles.aspx
-            //SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-        }
-        //protected override void OnPaint(PaintEventArgs e)
-        //{
-        //    Rectangle rect = ClientRectangle;
-        //    Graphics g = e.Graphics;
-
-        //    ProgressBarRenderer.DrawHorizontalBar(g, rect);
-        //    rect.Inflate(-3, -3);
-        //    if (Value > 0)
-        //    {
-        //        // As we doing this ourselves we need to draw the chunks on the progress bar
-        //        Rectangle clip = new Rectangle(rect.X, rect.Y, (int)Math.Round(((float)Value / Maximum) * rect.Width), rect.Height);
-        //        ProgressBarRenderer.DrawHorizontalChunks(g, clip);
-        //    }
-
-        //    // Set the Display text (Either a % amount or our custom text
-        //    int percent = (int)(((double)this.Value / (double)this.Maximum) * 100);
-        //    string text = DisplayStyle == ProgressBarDisplayText.Percentage ? percent.ToString() + '%' : CustomText;
-
-        //    using (Font f = new Font(FontFamily.GenericSerif, 10))
-        //    {
-
-        //        SizeF len = g.MeasureString(text, f);
-        //        // Calculate the location of the text (the middle of progress bar)
-        //        // Point location = new Point(Convert.ToInt32((rect.Width / 2) - (len.Width / 2)), Convert.ToInt32((rect.Height / 2) - (len.Height / 2)));
-        //        Point location = new Point(Convert.ToInt32((Width / 2) - len.Width / 2), Convert.ToInt32((Height / 2) - len.Height / 2));
-        //        // The commented-out code will centre the text into the highlighted area only. This will centre the text regardless of the highlighted area.
-        //        // Draw the custom text
-        //        g.DrawString(text, f, Brushes.Red, location);
-        //    }
-        //}
     }
 }
