@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XPBars"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Realife XP" Height="450" Width="800"
+        Style="{StaticResource CustomWindowStyle}">
     <Grid DataContext="{StaticResource mvm}" VerticalAlignment="Stretch">
         <!--<Frame x:Name="fInsert" Content="Frame" HorizontalAlignment="Left" Height="100" Margin="209,108,0,0" VerticalAlignment="Top" Width="375"/>-->
         <!--<Frame x:Name="fInsert" Width="600" Height="40"/>
@@ -36,7 +37,7 @@
                         <TextBlock Text="{Binding Description}" HorizontalAlignment="Stretch"/>
                         <Grid Grid.Row="1">
                             <!--<ProgressBar x:Name="pbList" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="500" HorizontalAlignment="Stretch"/>-->
-                            <local:XPBarControl x:Name="pbList" Level="{Binding Level}" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="500" HorizontalAlignment="Stretch"/>
+                            <local:XPBarControl x:Name="pbList" Level="{Binding Level}" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="500" HorizontalAlignment="Stretch" Background="#FFAAA9A9"/>
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold">
                                 <TextBlock.Text>
                                     <!--<MultiBinding StringFormat="{}UserLvl: {0}/{1}">-->

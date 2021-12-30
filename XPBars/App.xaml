@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:XPBars"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <local:MainViewModel x:Key="mvm"/>
+        <ResourceDictionary>
+            <local:MainViewModel x:Key="mvm"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
