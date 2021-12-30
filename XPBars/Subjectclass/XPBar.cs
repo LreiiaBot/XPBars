@@ -25,5 +25,10 @@ namespace XPBars
         {
 
         }
+
+        public static void Save(IEnumerable<XPBar> xpbars)
+        {
+            XPBarCsv.Save(xpbars);
+        }
     }
 }

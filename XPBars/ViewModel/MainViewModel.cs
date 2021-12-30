@@ -44,6 +44,9 @@ namespace XPBars
             school.Subbars.Add(new XPBar("German", 1, 1, false));
             masterBar.Subbars.Add(school);
             school.CurrentValue = 3;
+
+
+            XPBar.Save(LXPBars);
         }
     }
 }
