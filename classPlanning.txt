@@ -34,3 +34,9 @@ sortiersystem: value -> aufwärts und abwärts
 
 references:
 https://stackoverflow.com/questions/3529928/how-do-i-put-text-on-progressbar/53850764
+
+
+unterkategorie bekommt x xp
+	-> darüberliegende bekommt x / n_sub xp
+
+(dafür summe berechnen und nach insertion loop / n_sub -> dann add to parent)

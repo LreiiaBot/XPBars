@@ -20,7 +20,8 @@
             <ComboBoxItem Tag="test" Content="yikes"></ComboBoxItem>
             <ComboBoxItem Tag="yikes" Content="test1"></ComboBoxItem>
         </ComboBox>-->
-        <TreeView Margin="5" ItemsSource="{Binding LXPBars}" VerticalAlignment="Stretch">
+        <Button Click="Button_Click" Width="200" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TreeView Margin="5" ItemsSource="{Binding LXPBars}" VerticalAlignment="Stretch" SelectedItemChanged="TreeView_SelectedItemChanged">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Subbars}">
                     <!--<Border Margin="3" BorderThickness="1" CornerRadius="3" Width="400" Height="50">-->
@@ -49,8 +50,8 @@
                             </TextBlock>
                         </Grid>
                         <TextBlock Text="{Binding Level}" Grid.Row="1" Grid.Column="1" Padding="5"/>
-                        <Expander Grid.Row="2" Header="Insert" Visibility="Collapsed">
-                        </Expander>
+                        <local:CustomExpanderControl x:Name="eInsert" Selected="{Binding Selected}" Grid.Row="2" Header="Insert">
+                        </local:CustomExpanderControl>
                     </Grid>
                     <!--</Border>-->
                 </HierarchicalDataTemplate>

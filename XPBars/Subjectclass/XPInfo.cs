@@ -1,17 +1,74 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace XPBars
 {
-    public class XPInfo
+    public class XPInfo : BaseViewModel
     {
-        public int CurrentValue { get; set; } // within the current level; DONT USE SETTER
-        public int MaxValue { get; set; } // of the current level; DONT USE SETTER
-        public string Description { get; set; }
-        public int Level { get; set; }
-        public bool Done { get; set; }
-        public ObservableCollection<Insertion> Protocol { get; set; } = new ObservableCollection<Insertion>();
+        #region Memebers
+
+        private int currentValue;
+
+        public int CurrentValue // within the current level; DONT USE SETTER
+        {
+            get { return currentValue; }
+            set { currentValue = value; OnPropertyChanged(); }
+        }
+
+        private int maxValue;
+
+        public int MaxValue // of the current level; DONT USE SETTER
+        {
+            get { return maxValue; }
+            set { maxValue = value; OnPropertyChanged(); }
+        }
+
+        private string description;
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; OnPropertyChanged(); }
+        }
+
+        private int level;
+
+        public int Level
+        {
+            get { return level; }
+            set { level = value; OnPropertyChanged(); }
+        }
+
+        private bool done;
+
+        public bool Done
+        {
+            get { return done; }
+            set { done = value; OnPropertyChanged(); }
+        }
+
+        private ObservableCollection<Insertion> protocol = new ObservableCollection<Insertion>();
+
+        public ObservableCollection<Insertion> Protocol
+        {
+            get { return protocol; }
+            set { protocol = value; OnPropertyChanged(); }
+        }
+
+        private bool selected;
+
+        public bool Selected
+        {
+            get { return selected; }
+            set { selected = value; OnPropertyChanged(); }
+        }
+
+        #endregion
+
 
         public XPInfo()
         {
@@ -36,11 +93,30 @@ namespace XPBars
             MaxValue = DetermineMaxValueOfLevel(level);
         }
 
-        public void AddValue(Insertion insertion)
+        public async void AddValue(Insertion insertion)
         {
             Protocol.Add(insertion);
             List<int> values = OrbsToValues(insertion.Value, insertion.Weight);
-            // calculate sum
+            int newValue = 0;
+            int leftValue = 0;
+
+            // TODO later add step by step (maybe here with thread sleep?
+            foreach (var value in values)
+            {
+                newValue = CurrentValue + value;
+                leftValue = 0;
+                if (newValue > MaxValue)
+                {
+                    leftValue = newValue - MaxValue;
+                    Level++;
+                    CurrentValue = leftValue;
+                }
+                else
+                {
+                    CurrentValue = newValue;
+                }
+                await Task.Run(() => Thread.Sleep(500));
+            }
         }
 
 
