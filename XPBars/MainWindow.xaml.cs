@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -14,17 +15,12 @@ namespace XPBars
         {
             InitializeComponent();
             Mvm = (MainViewModel)FindResource("mvm");
-
-            //Page insert = new Pages.InsertPage();
-            //fInsert.Navigate(insert);
-        }
-
-        private void Expander_Collapsed(object sender, RoutedEventArgs e)
-        {
         }
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
+            Mvm.SelectedXPBar = (XPBar)e.NewValue;
+
             TreeView treeView = sender as TreeView;
             if (treeView != null)
             {
@@ -39,18 +35,21 @@ namespace XPBars
                 {
                     y.Selected = false;
                 }
-                //TreeView y = (TreeView)e.OriginalSource;
-                //y.Visibility = Visibility.Hidden;
-
-                //var z = y.Items;
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var item = Mvm.LXPBars[0].Subbars[3].Subbars[1];
-            Insertion i = new Insertion("DemoInsertion", 5, XPWeight.Great);
-            item.AddValue(i);
+            //var item = Mvm.LXPBars[0].Subbars[3].Subbars[1];
+            //Insertion i = new Insertion("DemoInsertion", 5, XPWeight.Great);
+            //item.AddValue(i);
+
+            Mvm.AddOrbs();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Mvm.Save();
         }
     }
 }

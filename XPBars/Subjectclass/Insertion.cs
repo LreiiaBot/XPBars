@@ -2,13 +2,45 @@
 
 namespace XPBars
 {
-    public class Insertion
+    public class Insertion : BaseViewModel
     {
-        public string Description { get; set; }
-        public int Value { get; set; }
-        public XPWeight Weight { get; set; }
-        public DateTimeOffset Date { get; set; } = DateTimeOffset.UtcNow;
+        #region Members
+
+        private string description;
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; OnPropertyChanged(); }
+        }
+
+        private int value;
+
+        public int Value
+        {
+            get { return value; }
+            set { this.value = value; OnPropertyChanged(); }
+        }
+
+        private XPWeight weight;
+
+        public XPWeight Weight
+        {
+            get { return weight; }
+            set { weight = value; OnPropertyChanged(); }
+        }
+
+        private DateTimeOffset date = DateTimeOffset.UtcNow;
+
+        public DateTimeOffset Date
+        {
+            get { return date = DateTimeOffset.UtcNow; }
+            set { date = value; OnPropertyChanged(); }
+        }
+
         public bool IgnoreWeight { get; set; }
+
+        #endregion
 
         public Insertion(string description, int value, XPWeight weight)
         {

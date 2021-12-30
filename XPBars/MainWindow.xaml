@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:XPBars"
         mc:Ignorable="d"
         Title="Realife XP" Height="450" Width="800"
-        Style="{StaticResource CustomWindowStyle}">
+        Style="{StaticResource CustomWindowStyle}" Closing="Window_Closing">
     <Grid DataContext="{StaticResource mvm}" VerticalAlignment="Stretch">
         <!--<Frame x:Name="fInsert" Content="Frame" HorizontalAlignment="Left" Height="100" Margin="209,108,0,0" VerticalAlignment="Top" Width="375"/>-->
         <!--<Frame x:Name="fInsert" Width="600" Height="40"/>
@@ -20,7 +20,7 @@
             <ComboBoxItem Tag="test" Content="yikes"></ComboBoxItem>
             <ComboBoxItem Tag="yikes" Content="test1"></ComboBoxItem>
         </ComboBox>-->
-        <Button Click="Button_Click" Width="200" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <!--<Button Click="Button_Click" Width="200" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>-->
         <TreeView Margin="5" ItemsSource="{Binding LXPBars}" VerticalAlignment="Stretch" SelectedItemChanged="TreeView_SelectedItemChanged">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Subbars}">
@@ -50,8 +50,18 @@
                             </TextBlock>
                         </Grid>
                         <TextBlock Text="{Binding Level}" Grid.Row="1" Grid.Column="1" Padding="5"/>
-                        <local:CustomExpanderControl x:Name="eInsert" Selected="{Binding Selected}" Grid.Row="2" Header="Insert">
-                        </local:CustomExpanderControl>
+                        <local:CustomGridControl Grid.Row="2" Selected="{Binding Selected}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="tbCount" Text="{Binding Insert.Value}" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                            <ComboBox Name="cbWeight" SelectedValue="{Binding Insert.Weight}" Grid.Column="1"/>
+                            <TextBox x:Name="tbDescription" Text="{Binding Insert.Description}" Grid.Column="2" VerticalContentAlignment="Center"/>
+                            <Button Content="+" x:Name="btnAdd" Grid.Column="3" Click="Button_Click"/>
+                        </local:CustomGridControl>
                     </Grid>
                     <!--</Border>-->
                 </HierarchicalDataTemplate>

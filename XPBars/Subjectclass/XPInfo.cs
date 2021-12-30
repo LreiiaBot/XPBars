@@ -67,6 +67,15 @@ namespace XPBars
             set { selected = value; OnPropertyChanged(); }
         }
 
+
+        private Insertion insert = new Insertion(String.Empty, 0, XPWeight.Small);
+
+        public Insertion Insert
+        {
+            get { return insert; }
+            set { insert = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
 
