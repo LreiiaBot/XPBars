@@ -64,7 +64,7 @@ namespace XPBars
         }
         public static string FromBarToCsv(XPBar xpbar)
         {
-            return $"{xpbar.Description} {xpbar.CurrentValue} {xpbar.Level} {xpbar.Done}";
+            return $"{xpbar.Description}{Separator}{xpbar.CurrentValue}{Separator}{xpbar.Level}{Separator}{xpbar.Done}";
         }
     }
 }
