@@ -61,6 +61,7 @@
     <Compile Include="Controls\CustomExpanderControl.cs" />
     <Compile Include="Controls\CustomGridControl.cs" />
     <Compile Include="Controls\XPBarControl.cs" />
+    <Compile Include="Helper\Helper.cs" />
     <Compile Include="Pages\InsertPage.xaml.cs">
       <DependentUpon>InsertPage.xaml</DependentUpon>
     </Compile>

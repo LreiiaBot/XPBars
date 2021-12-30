@@ -41,3 +41,18 @@ unterkategorie bekommt x xp
 
 (dafür summe berechnen und nach insertion loop / n_sub -> dann add to parent)
 -> bubble treibt hoch bis zu Master, reward wird immer geringer
+
+
+fehlermeldung bei falscher eingabe und so
+
+
+neue listen erstellen
+
+Log anzeigen
+
+sortiersystem
+
+je höher die Orbanzahl, umso schneller (kürzere Wartezeit dazwischen)
+
+5000 farbe weiß (balken) + vllt muss textfarbe dann schwarz werden
+

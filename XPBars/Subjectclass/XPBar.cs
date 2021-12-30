@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
@@ -46,13 +47,13 @@ namespace XPBars
         }
         public async void AddValue(Insertion insertion)
         {
+            insertion.Date = DateTimeOffset.UtcNow;
             Protocol.Add(insertion);
             List<int> values = OrbsToValues(insertion);
             int sum = 0;
             int newValue = 0;
             int leftValue = 0;
 
-            // TODO later add step by step (maybe here with thread sleep?
             foreach (var value in values)
             {
                 newValue = CurrentValue + value;

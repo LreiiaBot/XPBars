@@ -37,6 +37,10 @@ namespace XPBars
                 }
                 ReadDirs(thisDir, xpbar);
             }
+            if (xpbar != null && xpbar.Subbars != null)
+            {
+                xpbar.Subbars = xpbar.Subbars.ToList().OrderBy(bar => bar.Level).ThenBy(bar => bar.CurrentValue).Convert();
+            }
             return xpbar;
         }
         public static void Save(IEnumerable<XPBar> xpbars)
