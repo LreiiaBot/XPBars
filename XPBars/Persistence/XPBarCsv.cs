@@ -11,14 +11,33 @@ namespace XPBars
     {
         public static string Basedir { get; set; } = "data";
         public static char Separator { get; set; } = ';';
-        public static List<XPBar> Read()
+        public static XPBar Read()
         {
-            List<XPBar> xpbars = new List<XPBar>();
-            using (var reader = new StreamReader(Basedir))
+            XPBar xpbar = null;
+            xpbar = ReadDirs(Basedir, xpbar);
+            return xpbar;
+        }
+        public static XPBar ReadDirs(string parentDir, XPBar parent)
+        {
+            XPBar xpbar = null;
+            string thisDir = String.Empty;
+            string[] dirs = Directory.GetDirectories(parentDir);
+            foreach (var dir in dirs)
             {
-                // TODO
+                using (var reader = new StreamReader(Path.Combine(dir, new DirectoryInfo(dir).Name + ".csv")))
+                {
+                    string row = reader.ReadLine();
+                    xpbar = FromCsvToBar(row);
+                    xpbar.Parentbar = parent;
+                    if (parent != null)
+                    {
+                        parent.Subbars.Add(xpbar);
+                    }
+                    thisDir = Path.Combine(parentDir, xpbar.Description);
+                }
+                ReadDirs(thisDir, xpbar);
             }
-            return xpbars;
+            return xpbar;
         }
         public static void Save(IEnumerable<XPBar> xpbars)
         {

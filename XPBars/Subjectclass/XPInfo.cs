@@ -93,33 +93,6 @@ namespace XPBars
             MaxValue = DetermineMaxValueOfLevel(level);
         }
 
-        public async void AddValue(Insertion insertion)
-        {
-            Protocol.Add(insertion);
-            List<int> values = OrbsToValues(insertion.Value, insertion.Weight);
-            int newValue = 0;
-            int leftValue = 0;
-
-            // TODO later add step by step (maybe here with thread sleep?
-            foreach (var value in values)
-            {
-                newValue = CurrentValue + value;
-                leftValue = 0;
-                if (newValue > MaxValue)
-                {
-                    leftValue = newValue - MaxValue;
-                    Level++;
-                    CurrentValue = leftValue;
-                }
-                else
-                {
-                    CurrentValue = newValue;
-                }
-                await Task.Run(() => Thread.Sleep(500));
-            }
-        }
-
-
         public static int DetermineMaxValueOfLevel(int level)
         {
             int value = 0;
@@ -162,13 +135,18 @@ namespace XPBars
         }
 
 
-        public static List<int> OrbsToValues(int number, XPWeight weight) // TODO dont calculate every orb at a time, each by each -> slow process Thread sleep + show applied value
+        public static List<int> OrbsToValues(Insertion insertion) // TODO dont calculate every orb at a time, each by each -> slow process Thread sleep + show applied value
         {
             List<int> values = new List<int>();
-            Random r = new Random(DateTime.Now.Millisecond);
-            for (int i = 0; i < number; i++)
+            if (insertion.IgnoreWeight)
             {
-                switch (weight)
+                values.Add(insertion.Value);
+                return values;
+            }
+            Random r = new Random(DateTime.Now.Millisecond);
+            for (int i = 0; i < insertion.Value; i++)
+            {
+                switch (insertion.Weight)
                 {
                     case XPWeight.Small:
                         values.Add(r.Next(1, 3)); // 1 - 2

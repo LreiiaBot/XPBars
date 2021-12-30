@@ -40,3 +40,4 @@ unterkategorie bekommt x xp
 	-> darüberliegende bekommt x / n_sub xp
 
 (dafür summe berechnen und nach insertion loop / n_sub -> dann add to parent)
+-> bubble treibt hoch bis zu Master, reward wird immer geringer
