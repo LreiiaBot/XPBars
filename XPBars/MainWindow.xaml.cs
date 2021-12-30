@@ -48,7 +48,7 @@ namespace XPBars
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var item = Mvm.LXPBars[0].Subbars[3];
+            var item = Mvm.LXPBars[0].Subbars[3].Subbars[1];
             Insertion i = new Insertion("DemoInsertion", 5, XPWeight.Great);
             item.AddValue(i);
         }

@@ -58,17 +58,25 @@ namespace XPBars
                 newValue = CurrentValue + value;
                 sum += value;
                 leftValue = 0;
-                if (newValue > MaxValue)
+                if (newValue >= MaxValue)
                 {
-                    leftValue = newValue - MaxValue;
-                    Level++;
-                    CurrentValue = leftValue;
+                    while (newValue >= MaxValue)
+                    {
+                        leftValue = newValue - MaxValue;
+
+                        //shortly only for design
+                        CurrentValue = MaxValue;
+                        await Task.Run(() => Thread.Sleep(400));
+
+                        Level++;
+                        CurrentValue = leftValue;
+                    }
                 }
                 else
                 {
                     CurrentValue = newValue;
                 }
-                await Task.Run(() => Thread.Sleep(500));
+                await Task.Run(() => Thread.Sleep(600));
             }
             if (Parentbar != null)
             {

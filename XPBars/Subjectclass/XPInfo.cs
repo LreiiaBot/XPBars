@@ -40,7 +40,7 @@ namespace XPBars
         public int Level
         {
             get { return level; }
-            set { level = value; OnPropertyChanged(); }
+            set { level = value; MaxValue = DetermineMaxValueOfLevel(level); OnPropertyChanged(); }
         }
 
         private bool done;
