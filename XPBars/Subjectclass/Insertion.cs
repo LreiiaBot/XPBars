@@ -58,5 +58,10 @@ namespace XPBars
             Value = value;
             IgnoreWeight = ignoreWeight;
         }
+
+        public override string ToString()
+        {
+            return $"{Description} | {Value} {Weight}";
+        }
     }
 }

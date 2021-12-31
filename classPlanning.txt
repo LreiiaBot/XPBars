@@ -56,3 +56,12 @@ je höher die Orbanzahl, umso schneller (kürzere Wartezeit dazwischen)
 
 5000 farbe weiß (balken) + vllt muss textfarbe dann schwarz werden
 
+enter is add
+
+better log (list view items -> all on same row, ...)
+
+insetion -> add note property (also in view to add)
+
+add some colspan maybe, some problems on fields (move weird and so on)
+
+save protocol + read

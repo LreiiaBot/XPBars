@@ -50,7 +50,11 @@
                             </TextBlock>
                         </Grid>
                         <TextBlock Text="{Binding Level}" Grid.Row="1" Grid.Column="1" Padding="5"/>
-                        <local:CustomGridControl Grid.Row="2" Selected="{Binding Selected}">
+                        <local:CustomGridControl Grid.Row="2" Grid.ColumnSpan="2" Selected="{Binding Selected}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -61,6 +65,20 @@
                             <ComboBox Name="cbWeight" SelectedValue="{Binding Insert.Weight}" Grid.Column="1"/>
                             <TextBox x:Name="tbDescription" Text="{Binding Insert.Description}" Grid.Column="2" VerticalContentAlignment="Center"/>
                             <Button Content="+" x:Name="btnAdd" Grid.Column="3" Click="Button_Click"/>
+                            <Expander Header="Protocol" Grid.Row="1" Grid.ColumnSpan="5">
+                                <ListView ItemsSource="{Binding Protocol}">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Width="250" Header="Description" DisplayMemberBinding="{Binding Description}"/>
+                                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}" />
+                                            <GridViewColumn Header="Weight" DisplayMemberBinding="{Binding Weight}" />
+                                            <GridViewColumn Header="IgnoreWeight" DisplayMemberBinding="{Binding IgnoreWeight}" />
+                                            <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date, StringFormat='dd.MM.yyy HH:mm'}" />
+                                            <!--<GridViewColumn Header="Auto" DisplayMemberBinding="{Binding }" />-->
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Expander>
                         </local:CustomGridControl>
                     </Grid>
                     <!--</Border>-->
