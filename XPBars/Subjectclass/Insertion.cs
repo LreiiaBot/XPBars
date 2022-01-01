@@ -30,9 +30,9 @@ namespace XPBars
             set { weight = value; OnPropertyChanged(); }
         }
 
-        private DateTimeOffset date = DateTimeOffset.UtcNow;
+        private DateTime date = DateTime.UtcNow;
 
-        public DateTimeOffset Date
+        public DateTime Date
         {
             get { return date; }
             set { date = value; OnPropertyChanged(); }
@@ -48,7 +48,7 @@ namespace XPBars
             Value = value;
             Weight = weight;
         }
-        public Insertion(string description, int value, XPWeight weight, DateTimeOffset date) : this(description, value, weight)
+        public Insertion(string description, int value, XPWeight weight, DateTime date) : this(description, value, weight)
         {
             Date = date;
         }
@@ -58,7 +58,7 @@ namespace XPBars
             Value = value;
             IgnoreWeight = ignoreWeight;
         }
-        public Insertion(string description, int value, XPWeight weight, bool ignoreWeight, DateTimeOffset date) : this(description, value, weight, date)
+        public Insertion(string description, int value, XPWeight weight, bool ignoreWeight, DateTime date) : this(description, value, weight, date)
         {
             IgnoreWeight = ignoreWeight;
         }

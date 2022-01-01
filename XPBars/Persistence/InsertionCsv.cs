@@ -82,7 +82,7 @@ namespace XPBars
         {
             string[] fields = csv.Split(XPBarCsv.Separator);
             Insertion insertion = null;
-            insertion = new Insertion(fields[0], Convert.ToInt32(fields[1]), (XPWeight)Convert.ToInt32(fields[2]), Convert.ToBoolean(fields[3]), new DateTimeOffset(Convert.ToDateTime(fields[4])));
+            insertion = new Insertion(fields[0], Convert.ToInt32(fields[1]), (XPWeight)Convert.ToInt32(fields[2]), Convert.ToBoolean(fields[3]), Convert.ToDateTime(fields[4]));
 
             return insertion;
         }

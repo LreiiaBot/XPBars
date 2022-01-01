@@ -47,7 +47,7 @@ namespace XPBars
         }
         public async void AddValue(Insertion insertion)
         {
-            insertion.Date = DateTimeOffset.UtcNow;
+            insertion.Date = DateTime.Now;
             Protocol.Add(insertion);
             List<int> values = OrbsToValues(insertion);
             int sum = 0;
