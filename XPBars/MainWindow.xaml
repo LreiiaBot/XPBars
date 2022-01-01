@@ -29,6 +29,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -50,7 +51,7 @@
                             </TextBlock>
                         </Grid>
                         <TextBlock Text="{Binding Level}" Grid.Row="1" Grid.Column="1" Padding="5" HorizontalAlignment="Left"/>
-                        <local:CustomGridControl Grid.Row="2" Grid.ColumnSpan="2" Selected="{Binding Selected}">
+                        <local:CustomGridControl Grid.Row="2" Grid.ColumnSpan="3" Selected="{Binding Selected}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
