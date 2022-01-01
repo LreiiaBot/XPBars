@@ -48,22 +48,18 @@ fehlermeldung bei falscher eingabe und so
 
 neue listen erstellen
 
-Log anzeigen
-
 sortiersystem
 
 je höher die Orbanzahl, umso schneller (kürzere Wartezeit dazwischen)
 
 5000 farbe weiß (balken) + vllt muss textfarbe dann schwarz werden
 
-enter is add
-
 better log (list view items -> all on same row, ...)
 
 insetion -> add note property (also in view to add)
 
-add some colspan maybe, some problems on fields (move weird and so on)
-
 save protocol (maybe add flag new as prop -> then only append, never delete, less data garbage)
 
 Time bug
+
+tab order
