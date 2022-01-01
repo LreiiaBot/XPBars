@@ -72,5 +72,21 @@ namespace XPBars
         {
             Mvm.AddBar();
         }
+        private void BtnOrderAZ(object sender, RoutedEventArgs e)
+        {
+            Mvm.OrderAllAZ();
+        }
+        private void BtnOrderZA(object sender, RoutedEventArgs e)
+        {
+            Mvm.OrderAllZA();
+        }
+        private void BtnOrder1N(object sender, RoutedEventArgs e)
+        {
+            Mvm.OrderAll1N();
+        }
+        private void BtnOrderN1(object sender, RoutedEventArgs e)
+        {
+            Mvm.OrderAllN1();
+        }
     }
 }

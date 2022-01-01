@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace XPBars
 {
@@ -79,6 +80,56 @@ namespace XPBars
         public void Save()
         {
             XPBar.Save(LXPBars);
+        }
+
+        public void OrderAllAZ()
+        {
+            OrderSubbarsAZ(LXPBars[0]);
+        }
+        public void OrderAllZA()
+        {
+            OrderSubbarsZA(LXPBars[0]);
+        }
+        public void OrderAll1N()
+        {
+            OrderSubbars1N(LXPBars[0]);
+        }
+        public void OrderAllN1()
+        {
+            OrderSubbarsN1(LXPBars[0]);
+        }
+
+        public void OrderSubbarsAZ(XPBar xpbar)
+        {
+            xpbar.Subbars = xpbar.Subbars.OrderBy(bar => bar.Description).ThenBy(bar => bar.Level).ThenBy(bar => bar.CurrentValue).Convert();
+            foreach (var subbar in xpbar.Subbars)
+            {
+                OrderSubbarsAZ(subbar);
+            }
+        }
+        public void OrderSubbarsZA(XPBar xpbar)
+        {
+            xpbar.Subbars = xpbar.Subbars.OrderByDescending(bar => bar.Description).ThenBy(bar => bar.Level).ThenBy(bar => bar.CurrentValue).Convert();
+            foreach (var subbar in xpbar.Subbars)
+            {
+                OrderSubbarsZA(subbar);
+            }
+        }
+        public void OrderSubbars1N(XPBar xpbar)
+        {
+            xpbar.Subbars = xpbar.Subbars.OrderBy(bar => bar.Level).ThenBy(bar => bar.CurrentValue).ThenBy(bar => bar.Description).Convert();
+            foreach (var subbar in xpbar.Subbars)
+            {
+                OrderSubbars1N(subbar);
+            }
+        }
+        public void OrderSubbarsN1(XPBar xpbar)
+        {
+            xpbar.Subbars = xpbar.Subbars.OrderByDescending(bar => bar.Level).ThenByDescending(bar => bar.CurrentValue).ThenBy(bar => bar.Description).Convert();
+            foreach (var subbar in xpbar.Subbars)
+            {
+                OrderSubbarsN1(subbar);
+            }
         }
     }
 }
