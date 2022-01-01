@@ -64,4 +64,6 @@ insetion -> add note property (also in view to add)
 
 add some colspan maybe, some problems on fields (move weird and so on)
 
-save protocol + read
+save protocol (maybe add flag new as prop -> then only append, never delete, less data garbage)
+
+Time bug

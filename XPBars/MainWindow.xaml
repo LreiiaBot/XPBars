@@ -27,18 +27,18 @@
                     <!--<Border Margin="3" BorderThickness="1" CornerRadius="3" Width="400" Height="50">-->
                     <Grid HorizontalAlignment="Stretch" Margin="3">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="{Binding Description}" HorizontalAlignment="Stretch"/>
-                        <Grid Grid.Row="1">
+                        <TextBlock Text="{Binding Description}" HorizontalAlignment="Stretch" Grid.ColumnSpan="2"/>
+                        <Grid Grid.Row="1" HorizontalAlignment="Left">
                             <!--<ProgressBar x:Name="pbList" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="500" HorizontalAlignment="Stretch"/>-->
-                            <local:XPBarControl x:Name="pbList" Level="{Binding Level}" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="500" HorizontalAlignment="Stretch" Background="#FFAAA9A9"/>
+                            <local:XPBarControl x:Name="pbList" Level="{Binding Level}" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="550" HorizontalAlignment="Center" Background="#FFAAA9A9"/>
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold">
                                 <TextBlock.Text>
                                     <!--<MultiBinding StringFormat="{}UserLvl: {0}/{1}">-->
@@ -49,22 +49,22 @@
                                 </TextBlock.Text>
                             </TextBlock>
                         </Grid>
-                        <TextBlock Text="{Binding Level}" Grid.Row="1" Grid.Column="1" Padding="5"/>
+                        <TextBlock Text="{Binding Level}" Grid.Row="1" Grid.Column="1" Padding="5" HorizontalAlignment="Left"/>
                         <local:CustomGridControl Grid.Row="2" Grid.ColumnSpan="2" Selected="{Binding Selected}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="4*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox x:Name="tbCount" Text="{Binding Insert.Value}" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            <ComboBox Name="cbWeight" SelectedValue="{Binding Insert.Weight}" Grid.Column="1"/>
+                            <TextBox x:Name="tbCount" Text="{Binding Insert.Value}" Width="50" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                            <ComboBox Name="cbWeight" SelectedValue="{Binding Insert.Weight}" Width="100" Grid.Column="1"/>
                             <TextBox x:Name="tbDescription" Text="{Binding Insert.Description}" Grid.Column="2" VerticalContentAlignment="Center"/>
-                            <Button Content="+" x:Name="btnAdd" Grid.Column="3" Click="Button_Click"/>
+                            <Button Content="+" x:Name="btnAdd" Grid.Column="3" Width="80" Click="Button_Click"/>
                             <Expander Header="Protocol" Grid.Row="1" Grid.ColumnSpan="5">
                                 <ListView ItemsSource="{Binding Protocol}">
                                     <ListView.View>
