@@ -65,10 +65,12 @@ namespace XPBars
             dirs.Add(xpbar.Description);
             Constructpath(dirs, xpbar.Parentbar);
             dirs.Insert(0, path);
-            dirs.Add(Filename);
             path = Path.Combine(dirs.ToArray());
 
-            using (var writer = new StreamWriter(path, false))
+            Directory.CreateDirectory(path);
+            string filePath = Path.Combine(path, Filename);
+
+            using (var writer = new StreamWriter(filePath, false))
             {
                 foreach (var insertion in xpbar.Protocol)
                 {

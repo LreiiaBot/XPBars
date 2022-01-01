@@ -81,7 +81,8 @@ namespace XPBars
             }
             if (Parentbar != null)
             {
-                Parentbar.AddValue(new Insertion(insertion.Description, sum / Parentbar.Subbars.Count, true));
+                int valueToAdd = (int)Math.Round((double)sum / (double)Parentbar.Subbars.Count);
+                Parentbar.AddValue(new Insertion(insertion.Description.Trim(), valueToAdd, true));
             }
         }
 

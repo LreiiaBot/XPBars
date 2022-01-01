@@ -23,6 +23,14 @@ namespace XPBars
             set { selectedXPBar = value; OnPropertyChanged(); }
         }
 
+        private string barname;
+
+        public string Barname
+        {
+            get { return barname; }
+            set { barname = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         public MainViewModel()
@@ -43,6 +51,29 @@ namespace XPBars
             }
             SelectedXPBar.Insert = new Insertion(String.Empty, 0, XPWeight.Small);
             SelectedXPBar.AddValue(insertHlp);
+        }
+
+        public void AddBar()
+        {
+            if (SelectedXPBar == null)
+            {
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(Barname))
+            {
+                return;
+            }
+            foreach (var subbar in SelectedXPBar.Subbars)
+            {
+                if (subbar.Description.Trim() == Barname.Trim())
+                {
+                    return;
+                }
+            }
+            XPBar xpbar = new XPBar(Barname.Trim());
+            xpbar.Parentbar = SelectedXPBar;
+            SelectedXPBar.Subbars.Add(xpbar);
+            Barname = String.Empty;
         }
 
         public void Save()

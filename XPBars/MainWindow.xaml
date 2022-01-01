@@ -8,20 +8,16 @@
         Title="Realife XP" Height="450" Width="800"
         Style="{StaticResource CustomWindowStyle}" Closing="Window_Closing">
     <Grid DataContext="{StaticResource mvm}" VerticalAlignment="Stretch">
-        <!--<Frame x:Name="fInsert" Content="Frame" HorizontalAlignment="Left" Height="100" Margin="209,108,0,0" VerticalAlignment="Top" Width="375"/>-->
-        <!--<Frame x:Name="fInsert" Width="600" Height="40"/>
-        <TextBox Text="{Binding Text}" HorizontalAlignment="Left" Height="23" Margin="463,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ProgressBar Tag="Yikes" Value="34" Opacity="0.8" HorizontalAlignment="Left" Height="27" Margin="244,66,0,0" VerticalAlignment="Top" Width="339"/>-->
-        <!--<Expander Header="Expander" HorizontalAlignment="Left" Height="100" Margin="279,179,0,0" VerticalAlignment="Top" Width="100">
-            <Grid Background="#FFE5E5E5"/>
-        </Expander>
-        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="184,75,0,0" VerticalAlignment="Top" Value="50" Width="100"/>
-        <ComboBox HorizontalAlignment="Left" Margin="224,204,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem Tag="test" Content="yikes"></ComboBoxItem>
-            <ComboBoxItem Tag="yikes" Content="test1"></ComboBoxItem>
-        </ComboBox>-->
-        <!--<Button Click="Button_Click" Width="200" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>-->
-        <TreeView Margin="5" ItemsSource="{Binding LXPBars}" VerticalAlignment="Stretch" SelectedItemChanged="TreeView_SelectedItemChanged">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Width="90" FontSize="15" Text="Listname"/>
+            <TextBox Width="410" FontSize="15" KeyDown="TBAddList" Text="{Binding Barname, UpdateSourceTrigger=PropertyChanged}" x:Name="tbBarname"/>
+            <Button Width="80" FontSize="15" Content="+" Click="BtnAddList"/>
+        </StackPanel>
+        <TreeView Grid.Row="1" Margin="5" ItemsSource="{Binding LXPBars}" VerticalAlignment="Stretch" SelectedItemChanged="TreeView_SelectedItemChanged">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Subbars}">
                     <!--<Border Margin="3" BorderThickness="1" CornerRadius="3" Width="400" Height="50">-->
@@ -62,9 +58,9 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox x:Name="tbCount" Text="{Binding Insert.Value}" Width="50" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="tbCount" Text="{Binding Insert.Value, UpdateSourceTrigger=PropertyChanged}" KeyDown="TBAddInsertion" Width="50" TextAlignment="Center" VerticalContentAlignment="Center"/>
                             <ComboBox Name="cbWeight" SelectedValue="{Binding Insert.Weight}" Width="100" Grid.Column="1"/>
-                            <TextBox x:Name="tbDescription" Text="{Binding Insert.Description, UpdateSourceTrigger=PropertyChanged}" KeyDown="tbDescription_KeyDown" Grid.Column="2" VerticalContentAlignment="Center">
+                            <TextBox x:Name="tbDescription" Text="{Binding Insert.Description, UpdateSourceTrigger=PropertyChanged}" KeyDown="TBAddInsertion" Grid.Column="2" VerticalContentAlignment="Center">
                                 <!--<TextBox.InputBindings>
                                     <KeyBinding Key="Execute" Command="{Binding EnterKeyCommand}"/>
                                     <KeyBinding Key="Enter" Command="{Binding EnterKeyCommand}"/>

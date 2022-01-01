@@ -54,8 +54,6 @@ je höher die Orbanzahl, umso schneller (kürzere Wartezeit dazwischen)
 
 5000 farbe weiß (balken) + vllt muss textfarbe dann schwarz werden
 
-better log (list view items -> all on same row, ...)
-
 insetion -> add note property (also in view to add)
 
 save protocol (maybe add flag new as prop -> then only append, never delete, less data garbage)
@@ -63,3 +61,15 @@ save protocol (maybe add flag new as prop -> then only append, never delete, les
 Time bug
 
 tab order
+
+read error when ho folder exists?
+ -> auto create master list?
+ 
+each list and maybe use same enum as prop for insertions
+	-> values: (insert, update, delete? maybe other, none)
+	none -> no action, because state is same as from reading
+	insert -> create csv and folders
+	update -> only append to existing?
+	delete -> not sure, ideas: completely delete OR create deleted folder and move all?
+		if second -> how? what if two times deleted list with same name? ... clarification
+		

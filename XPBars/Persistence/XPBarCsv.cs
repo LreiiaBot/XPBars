@@ -13,6 +13,10 @@ namespace XPBars
         public static char Separator { get; set; } = ';';
         public static XPBar Read()
         {
+            if (!Directory.Exists(Basedir))
+            {
+                return new XPBar("Master");
+            }
             XPBar xpbar = null;
             xpbar = ReadDirs(Basedir, xpbar);
             return xpbar;

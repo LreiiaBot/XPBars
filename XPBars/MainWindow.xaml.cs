@@ -52,12 +52,25 @@ namespace XPBars
             Mvm.Save();
         }
 
-        private void tbDescription_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void TBAddInsertion(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
                 Mvm.AddOrbs();
             }
+        }
+
+        private void TBAddList(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                Mvm.AddBar();
+            }
+        }
+
+        private void BtnAddList(object sender, RoutedEventArgs e)
+        {
+            Mvm.AddBar();
         }
     }
 }
