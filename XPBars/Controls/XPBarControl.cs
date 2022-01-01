@@ -17,9 +17,9 @@ namespace XPBars
         public static readonly DependencyProperty LevelDependencyProperty = DependencyProperty.Register("Level", typeof(int), typeof(XPBarControl), new FrameworkPropertyMetadata(0, new PropertyChangedCallback(LevelPropertyChanged)));
 
 
-        public string Level
+        public int Level
         {
-            get { return (string)GetValue(LevelDependencyProperty); }
+            get { return (int)GetValue(LevelDependencyProperty); }
             set { SetValue(LevelDependencyProperty, value); }
         }
 
@@ -55,11 +55,18 @@ namespace XPBars
                 green = 0;
                 blue = 0;
             }
+            else if (newValue < 5000)
+            {
+                // from 0 0 0 to 255 255 255
+                red = (int)((((double)newValue - 1000.0) / 4000.0) * 255.0); // linear gradient using percentage
+                green = red;
+                blue = red;
+            }
             else
             {
-                red = 0;
-                green = 0;
-                blue = 0;
+                red = 255;
+                green = 255;
+                blue = 255;
             }
 
             // for safety if any value is exceeds byte -> set it to max

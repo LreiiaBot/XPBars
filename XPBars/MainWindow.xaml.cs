@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -87,6 +88,14 @@ namespace XPBars
         private void BtnOrderN1(object sender, RoutedEventArgs e)
         {
             Mvm.OrderAllN1();
+        }
+        private void BtnExpand(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in tvXPBars.Items)
+            {
+                var tvi = tvXPBars.ItemContainerGenerator.ContainerFromItem(item) as TreeViewItem;
+                tvi?.ExpandSubtree();
+            }
         }
     }
 }

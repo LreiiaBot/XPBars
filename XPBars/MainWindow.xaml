@@ -14,14 +14,15 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Margin="5">
             <TextBlock Width="90" FontSize="18" Text="Listname" VerticalAlignment="Center"/>
-            <TextBox Width="340" FontSize="15" Margin="10 13 0 13" KeyDown="TBAddList" Text="{Binding Barname, UpdateSourceTrigger=PropertyChanged}" x:Name="tbBarname"/>
+            <TextBox Width="260" FontSize="15" Margin="10 5 0 5" VerticalAlignment="Center" KeyDown="TBAddList" Height="30" Text="{Binding Barname, UpdateSourceTrigger=PropertyChanged}" x:Name="tbBarname"/>
             <Button Width="80" FontSize="15" Margin="5 5 20 5" Content="+" Click="BtnAddList"/>
             <Button Width="50" FontSize="15" Margin="5" Content="A-Z" Click="BtnOrderAZ"/>
             <Button Width="50" FontSize="15" Margin="5" Content="Z-A" Click="BtnOrderZA"/>
             <Button Width="50" FontSize="15" Margin="5" Content="1-x" Click="BtnOrder1N"/>
             <Button Width="50" FontSize="15" Margin="5" Content="x-1" Click="BtnOrderN1"/>
+            <Button Width="60" FontSize="15" Margin="5" Content="Expand" Click="BtnExpand"/>
         </StackPanel>
-        <TreeView Grid.Row="1" Margin="5" ItemsSource="{Binding LXPBars}" VerticalAlignment="Stretch" SelectedItemChanged="TreeView_SelectedItemChanged">
+        <TreeView x:Name="tvXPBars" Grid.Row="1" Margin="5" ItemsSource="{Binding LXPBars}" VerticalAlignment="Stretch" SelectedItemChanged="TreeView_SelectedItemChanged">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Subbars}">
                     <!--<Border Margin="3" BorderThickness="1" CornerRadius="3" Width="400" Height="50">-->
@@ -40,7 +41,7 @@
                         <Grid Grid.Row="1" HorizontalAlignment="Left">
                             <!--<ProgressBar x:Name="pbList" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="500" HorizontalAlignment="Stretch"/>-->
                             <local:XPBarControl x:Name="pbList" Level="{Binding Level}" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="550" HorizontalAlignment="Center" Background="#FFAAA9A9"/>
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold">
+                            <local:CustomTextBlockControl Level="{Binding Level}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold">
                                 <TextBlock.Text>
                                     <!--<MultiBinding StringFormat="{}UserLvl: {0}/{1}">-->
                                     <MultiBinding StringFormat="{}{0}/{1}">
@@ -48,7 +49,7 @@
                                         <Binding Path="Maximum" ElementName="pbList"/>
                                     </MultiBinding>
                                 </TextBlock.Text>
-                            </TextBlock>
+                            </local:CustomTextBlockControl>
                         </Grid>
                         <TextBlock Text="{Binding Level}" Grid.Row="1" Grid.Column="1" Padding="5" HorizontalAlignment="Left"/>
                         <local:CustomGridControl Grid.Row="2" Grid.ColumnSpan="3" Selected="{Binding Selected}">

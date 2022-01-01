@@ -41,6 +41,10 @@ namespace XPBars
 
         public void AddOrbs()
         {
+            SelectedXPBar.Level = SelectedXPBar.Level + SelectedXPBar.Insert.Value;
+            //SelectedXPBar.CurrentValue = SelectedXPBar.MaxValue / 3 * 1;
+            SelectedXPBar.CurrentValue = Convert.ToInt32(SelectedXPBar.Insert.Description);
+            return;
             var insertHlp = SelectedXPBar.Insert;
             if (insertHlp.Value <= 0)
             {

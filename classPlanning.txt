@@ -73,3 +73,7 @@ each list and maybe use same enum as prop for insertions
 	delete -> not sure, ideas: completely delete OR create deleted folder and move all?
 		if second -> how? what if two times deleted list with same name? ... clarification
 		
+ab 4600 schrift schwarz (level dings) -> also farbe wie hintergrund ungefähr
+
+
+40 - 170 immer noch hellgrau aber lesbar
