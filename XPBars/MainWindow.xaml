@@ -64,7 +64,12 @@
                             </Grid.ColumnDefinitions>
                             <TextBox x:Name="tbCount" Text="{Binding Insert.Value}" Width="50" TextAlignment="Center" VerticalContentAlignment="Center"/>
                             <ComboBox Name="cbWeight" SelectedValue="{Binding Insert.Weight}" Width="100" Grid.Column="1"/>
-                            <TextBox x:Name="tbDescription" Text="{Binding Insert.Description}" Grid.Column="2" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="tbDescription" Text="{Binding Insert.Description, UpdateSourceTrigger=PropertyChanged}" KeyDown="tbDescription_KeyDown" Grid.Column="2" VerticalContentAlignment="Center">
+                                <!--<TextBox.InputBindings>
+                                    <KeyBinding Key="Execute" Command="{Binding EnterKeyCommand}"/>
+                                    <KeyBinding Key="Enter" Command="{Binding EnterKeyCommand}"/>
+                                </TextBox.InputBindings>-->
+                            </TextBox>
                             <Button Content="+" x:Name="btnAdd" Grid.Column="3" Width="80" Click="Button_Click"/>
                             <Expander Header="Protocol" Grid.Row="1" Grid.ColumnSpan="5">
                                 <ListView ItemsSource="{Binding Protocol}">
