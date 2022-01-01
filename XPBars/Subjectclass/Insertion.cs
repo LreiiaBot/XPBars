@@ -34,7 +34,7 @@ namespace XPBars
 
         public DateTimeOffset Date
         {
-            get { return date = DateTimeOffset.UtcNow; }
+            get { return date; }
             set { date = value; OnPropertyChanged(); }
         }
 
