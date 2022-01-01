@@ -58,6 +58,10 @@ namespace XPBars
             Value = value;
             IgnoreWeight = ignoreWeight;
         }
+        public Insertion(string description, int value, XPWeight weight, bool ignoreWeight, DateTimeOffset date) : this(description, value, weight, date)
+        {
+            IgnoreWeight = ignoreWeight;
+        }
 
         public override string ToString()
         {

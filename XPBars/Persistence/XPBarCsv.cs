@@ -35,6 +35,8 @@ namespace XPBars
                     }
                     thisDir = Path.Combine(parentDir, xpbar.Description);
                 }
+                // read protocol
+                xpbar.Protocol = InsertionCsv.Read(xpbar).Convert();
                 ReadDirs(thisDir, xpbar);
             }
             if (xpbar != null && xpbar.Subbars != null)
@@ -68,7 +70,7 @@ namespace XPBars
             }
 
             // write protocols
-            // TODO
+            InsertionCsv.Save(xpbar);
 
             // do the same for all subbars
             foreach (var subbar in xpbar.Subbars)
