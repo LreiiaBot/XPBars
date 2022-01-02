@@ -16,6 +16,9 @@ namespace XPBars
         {
             InitializeComponent();
             Mvm = (MainViewModel)FindResource("mvm");
+
+            //btnBin.Content = "\u047C";
+            //btnBin.Content = "⌛";
         }
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -95,6 +98,18 @@ namespace XPBars
             {
                 var tvi = tvXPBars.ItemContainerGenerator.ContainerFromItem(item) as TreeViewItem;
                 tvi?.ExpandSubtree();
+            }
+        }
+        private void BtnDel(object sender, RoutedEventArgs e)
+        {
+            if (Mvm.SelectedXPBar == null)
+            {
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show($"Do you want to delete XPBar '{Mvm.SelectedXPBar.Description}' permanently?", $"Delte {Mvm.SelectedXPBar.Description}", MessageBoxButton.YesNo, MessageBoxImage.Exclamation, MessageBoxResult.No);
+            if (result == MessageBoxResult.Yes)
+            {
+                Mvm.DeleteBar();
             }
         }
     }

@@ -84,6 +84,8 @@ namespace XPBars
             set { insert = value; OnPropertyChanged(); }
         }
 
+        public PersistenceAction PersistenceAction { get; set; } = PersistenceAction.None;
+
         #endregion
 
 

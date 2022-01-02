@@ -67,6 +67,7 @@
       <DependentUpon>InsertPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Persistence\InsertionCsv.cs" />
+    <Compile Include="Persistence\PersistenceAction.cs" />
     <Compile Include="Persistence\XPBarCsv.cs" />
     <Compile Include="Subjectclass\Insertion.cs" />
     <Compile Include="Subjectclass\XPWeight.cs" />

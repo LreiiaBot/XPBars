@@ -15,7 +15,7 @@ namespace XPBars
         {
             if (!Directory.Exists(Basedir))
             {
-                return new XPBar("Master");
+                return new XPBar("Master") { PersistenceAction = PersistenceAction.Insert };
             }
             XPBar xpbar = null;
             xpbar = ReadDirs(Basedir, xpbar);
@@ -28,6 +28,10 @@ namespace XPBars
             string[] dirs = Directory.GetDirectories(parentDir);
             foreach (var dir in dirs)
             {
+                if (new DirectoryInfo(dir).Name.StartsWith("deleted_"))
+                {
+                    continue;
+                }
                 using (var reader = new StreamReader(Path.Combine(dir, new DirectoryInfo(dir).Name + ".csv")))
                 {
                     string row = reader.ReadLine();
@@ -59,18 +63,37 @@ namespace XPBars
         public static void SaveDirs(XPBar xpbar, string parentDir)
         {
             string thisDir = Path.Combine(parentDir, xpbar.Description);
-            // create dir if not already existing
-            Directory.CreateDirectory(thisDir);
 
-            // open writer
-            using (var writer = new StreamWriter(Path.Combine(thisDir, xpbar.Description + ".csv"), false))
+            // Delete?
+            if (xpbar.PersistenceAction == PersistenceAction.Delete)
             {
-                // write sinlge line with info
-                writer.WriteLine(FromBarToCsv(xpbar));
+                // del
+                string delDir = Path.Combine(parentDir, $"deleted_{DateTime.Now:yyyyMMdd_HHmmss}_{xpbar.Description}");
+                Directory.Move(thisDir, delDir);
+                return;
             }
 
-            // write protocols
-            InsertionCsv.Save(xpbar);
+            if (xpbar.PersistenceAction == PersistenceAction.NoneCascade)
+            {
+                return;
+            }
+
+            // No action?
+            if (xpbar.PersistenceAction != PersistenceAction.None)
+            {
+                // create dir if not already existing
+                Directory.CreateDirectory(thisDir);
+
+                // open writer
+                using (var writer = new StreamWriter(Path.Combine(thisDir, xpbar.Description + ".csv"), false))
+                {
+                    // write sinlge line with info
+                    writer.WriteLine(FromBarToCsv(xpbar));
+                }
+
+                // write protocols
+                InsertionCsv.Save(xpbar);
+            }
 
             // do the same for all subbars
             foreach (var subbar in xpbar.Subbars)

@@ -21,6 +21,8 @@
             <Button Width="50" FontSize="15" Margin="5" Content="1-x" Click="BtnOrder1N"/>
             <Button Width="50" FontSize="15" Margin="5" Content="x-1" Click="BtnOrderN1"/>
             <Button Width="60" FontSize="15" Margin="5" Content="Expand" Click="BtnExpand"/>
+            <Button Width="40" FontSize="15" Margin="5" Content="🗑" Click="BtnDel" x:Name="btnBin"/>
+            <Button Width="40" FontSize="15" Margin="5" Content="❄" Click="BtnDel" x:Name="btnFreeze"/>
         </StackPanel>
         <TreeView x:Name="tvXPBars" Grid.Row="1" Margin="5" ItemsSource="{Binding LXPBars}" VerticalAlignment="Stretch" SelectedItemChanged="TreeView_SelectedItemChanged">
             <TreeView.ItemTemplate>

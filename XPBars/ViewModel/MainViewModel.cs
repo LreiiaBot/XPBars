@@ -55,6 +55,10 @@ namespace XPBars
             }
             SelectedXPBar.Insert = new Insertion(String.Empty, 0, XPWeight.Small);
             SelectedXPBar.AddValue(insertHlp);
+            if (SelectedXPBar.PersistenceAction != PersistenceAction.Insert)
+            {
+                selectedXPBar.PersistenceAction = PersistenceAction.Update;
+            }
         }
 
         public void AddBar()
@@ -67,6 +71,10 @@ namespace XPBars
             {
                 return;
             }
+            if (Barname.Trim().StartsWith("deleted_"))
+            {
+                return;
+            }
             foreach (var subbar in SelectedXPBar.Subbars)
             {
                 if (subbar.Description.Trim() == Barname.Trim())
@@ -76,8 +84,24 @@ namespace XPBars
             }
             XPBar xpbar = new XPBar(Barname.Trim());
             xpbar.Parentbar = SelectedXPBar;
+            xpbar.PersistenceAction = PersistenceAction.Insert;
             SelectedXPBar.Subbars.Add(xpbar);
             Barname = String.Empty;
+        }
+
+        public void DeleteBar()
+        {
+            if (selectedXPBar.PersistenceAction == PersistenceAction.Insert)
+            {
+                SelectedXPBar.PersistenceAction = PersistenceAction.NoneCascade;
+            }
+            else
+            {
+                SelectedXPBar.PersistenceAction = PersistenceAction.Delete;
+            }
+            Save();
+            LXPBars.Clear();
+            LXPBars.Add(XPBar.Read());
         }
 
         public void Save()

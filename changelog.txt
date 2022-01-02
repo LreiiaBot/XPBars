@@ -1,0 +1,14 @@
+Delte Button -> Löscht Liste
+	Sicherheitsabfrage
+
+Deactivate / Freeze Button
+	Ausgegraut und immer nach unten sortiert
+	Man kann weiterhin nachschauen
+		-> wieder aktiviertbar
+subbars werden auch gefreezt / entfreezt
+Freeze-Farbe: Blau
+editable/enabled
+
+vielleicht
+farben in einstellungen anpassbar
+
