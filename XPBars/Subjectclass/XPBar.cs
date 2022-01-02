@@ -84,7 +84,7 @@ namespace XPBars
 
                         //shortly only for design
                         await Task.Run(() => SlowlyIncreaseTo(MaxValue));
-                        await Task.Run(() => Thread.Sleep(100));
+                        await Task.Run(() => Thread.Sleep(50));
 
                         Level++;
                         CurrentValue = 0;
@@ -95,7 +95,7 @@ namespace XPBars
                 {
                     await Task.Run(() => SlowlyIncreaseTo(newValue));
                 }
-                await Task.Run(() => Thread.Sleep(1000));
+                await Task.Run(() => Thread.Sleep(500));
             }
             insertion.FlatXP = sum;
             if (Parentbar != null)
@@ -108,11 +108,17 @@ namespace XPBars
         public async Task SlowlyIncreaseTo(int value)
         {
             int steps = 400;
-            steps = 200 + (int)(((double)value - (double)CurrentValue) / MaxValue * 1500);
+            steps = 200 + (int)(((double)value - (double)CurrentValue) / MaxValue * 800);
             double increase = ((double)value - (double)CurrentValue) / (double)steps;
             for (int i = 0; i < steps - 1; i++)
             {
                 CurrentValueDisplay += increase;
+
+                // Update shown number
+                // dont use setter -> would also update currentvaluedisplay -> performance and visual
+                currentValue = (int)CurrentValueDisplay;
+                OnPropertyChanged("CurrentValue");
+
                 await Task.Run(() => Thread.Sleep(1));
             }
             //CurrentValueDisplay = value;
@@ -121,7 +127,7 @@ namespace XPBars
 
         public async void ResetLastValueAdded()
         {
-            await Task.Run(() => Thread.Sleep(4500));
+            await Task.Run(() => Thread.Sleep(6500));
             LastValueAdded = String.Empty;
         }
 

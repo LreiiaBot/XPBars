@@ -11,7 +11,7 @@ namespace XPBars
     {
         #region Memebers
 
-        private int currentValue;
+        protected int currentValue;
 
         public int CurrentValue // within the current level; DONT USE SETTER
         {
@@ -19,7 +19,7 @@ namespace XPBars
             set { currentValue = value; OnPropertyChanged(); CurrentValueDisplay = currentValue; }
         }
 
-        private double currentValueDisplay;
+        protected double currentValueDisplay;
 
         public double CurrentValueDisplay
         {
