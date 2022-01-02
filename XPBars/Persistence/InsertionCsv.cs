@@ -70,11 +70,14 @@ namespace XPBars
             Directory.CreateDirectory(path);
             string filePath = Path.Combine(path, Filename);
 
-            using (var writer = new StreamWriter(filePath, false))
+            using (var writer = new StreamWriter(filePath, true))
             {
                 foreach (var insertion in xpbar.Protocol)
                 {
-                    writer.WriteLine(FromInsertionToCsv(insertion));
+                    if (insertion.PersistenceAction == PersistenceAction.Insert)
+                    {
+                        writer.WriteLine(FromInsertionToCsv(insertion));
+                    }
                 }
             }
         }

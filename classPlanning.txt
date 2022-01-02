@@ -45,18 +45,10 @@ unterkategorie bekommt x xp
 
 fehlermeldung bei falscher eingabe und so
 
-
-neue listen erstellen
-
-sortiersystem
-
-je höher die Orbanzahl, umso schneller (kürzere Wartezeit dazwischen)
-
-5000 farbe weiß (balken) + vllt muss textfarbe dann schwarz werden
-
 insetion -> add note property (also in view to add)
 
 save protocol (maybe add flag new as prop -> then only append, never delete, less data garbage)
+	-> problem: adding notes
 
 Time bug
 

@@ -197,7 +197,7 @@ namespace XPBars
         {
             foreach (var subbar in xpbar.Subbars)
             {
-                subbar.Freezed = !subbar.Freezed;
+                subbar.Freezed = xpbar.Freezed;
                 if (SelectedXPBar.PersistenceAction != PersistenceAction.Insert)
                 {
                     SelectedXPBar.PersistenceAction = PersistenceAction.Update;

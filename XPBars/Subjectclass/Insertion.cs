@@ -48,6 +48,8 @@ namespace XPBars
             set { flatXP = value; OnPropertyChanged(); }
         }
 
+        public PersistenceAction PersistenceAction { get; set; } = PersistenceAction.None;
+
         #endregion
 
         public Insertion(string description, int value, XPWeight weight)
@@ -70,7 +72,7 @@ namespace XPBars
         {
             IgnoreWeight = ignoreWeight;
         }
-        public Insertion(string description, int value, XPWeight weight, bool ignoreWeight, DateTime date, int flatXP) : this(description, value, weight, date)
+        public Insertion(string description, int value, XPWeight weight, bool ignoreWeight, DateTime date, int flatXP) : this(description, value, weight, ignoreWeight, date)
         {
             FlatXP = flatXP;
         }

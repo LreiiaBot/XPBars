@@ -90,10 +90,9 @@ namespace XPBars
                     // write sinlge line with info
                     writer.WriteLine(FromBarToCsv(xpbar));
                 }
-
-                // write protocols
-                InsertionCsv.Save(xpbar);
             }
+            // write protocols
+            InsertionCsv.Save(xpbar);
 
             // do the same for all subbars
             foreach (var subbar in xpbar.Subbars)

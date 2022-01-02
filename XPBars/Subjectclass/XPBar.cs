@@ -59,6 +59,7 @@ namespace XPBars
         {
             insertion.Date = DateTime.Now;
             Protocol.Add(insertion);
+            insertion.PersistenceAction = PersistenceAction.Insert;
             List<int> values = OrbsToValues(insertion);
             int sum = 0;
             int newValue = 0;
