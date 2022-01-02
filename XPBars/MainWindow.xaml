@@ -77,10 +77,11 @@
                                 <ListView ItemsSource="{Binding Protocol}">
                                     <ListView.View>
                                         <GridView>
+                                            <GridViewColumn Header="FlatXP" DisplayMemberBinding="{Binding FlatXP}" />
                                             <GridViewColumn Width="250" Header="Description" DisplayMemberBinding="{Binding Description}"/>
                                             <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}" />
                                             <GridViewColumn Header="Weight" DisplayMemberBinding="{Binding Weight}" />
-                                            <GridViewColumn Header="IgnoreWeight" DisplayMemberBinding="{Binding IgnoreWeight}" />
+                                            <GridViewColumn Header="FromSubbar" DisplayMemberBinding="{Binding IgnoreWeight}" />
                                             <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date, StringFormat='dd.MM.yyy HH:mm'}" />
                                             <!--<GridViewColumn Header="Auto" DisplayMemberBinding="{Binding }" />-->
                                         </GridView>

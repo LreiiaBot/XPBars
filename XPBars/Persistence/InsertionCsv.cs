@@ -82,13 +82,13 @@ namespace XPBars
         {
             string[] fields = csv.Split(XPBarCsv.Separator);
             Insertion insertion = null;
-            insertion = new Insertion(fields[0], Convert.ToInt32(fields[1]), (XPWeight)Convert.ToInt32(fields[2]), Convert.ToBoolean(fields[3]), Convert.ToDateTime(fields[4]));
+            insertion = new Insertion(fields[0], Convert.ToInt32(fields[1]), (XPWeight)Convert.ToInt32(fields[2]), Convert.ToBoolean(fields[3]), Convert.ToDateTime(fields[4]), Convert.ToInt32(fields[5]));
 
             return insertion;
         }
         public static string FromInsertionToCsv(Insertion insertion)
         {
-            return $"{insertion.Description}{XPBarCsv.Separator}{insertion.Value}{XPBarCsv.Separator}{(int)insertion.Weight}{XPBarCsv.Separator}{insertion.IgnoreWeight}{XPBarCsv.Separator}{insertion.Date}";
+            return $"{insertion.Description}{XPBarCsv.Separator}{insertion.Value}{XPBarCsv.Separator}{(int)insertion.Weight}{XPBarCsv.Separator}{insertion.IgnoreWeight}{XPBarCsv.Separator}{insertion.Date}{XPBarCsv.Separator}{insertion.FlatXP}";
         }
     }
 }

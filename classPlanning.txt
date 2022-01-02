@@ -77,3 +77,11 @@ ab 4600 schrift schwarz (level dings) -> also farbe wie hintergrund ungefähr
 
 
 40 - 170 immer noch hellgrau aber lesbar
+
+
+
+--> textfarbe im bereich 40 - 170
+	bereich hälfte von max - 45 bis max + 45 -> andere farbe (dunkleres grau)
+	
+xpbar filling (not directly bam but increase animation)
+

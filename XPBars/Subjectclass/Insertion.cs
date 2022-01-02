@@ -40,6 +40,14 @@ namespace XPBars
 
         public bool IgnoreWeight { get; set; }
 
+        private int flatXP;
+
+        public int FlatXP
+        {
+            get { return flatXP; }
+            set { flatXP = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         public Insertion(string description, int value, XPWeight weight)
@@ -61,6 +69,10 @@ namespace XPBars
         public Insertion(string description, int value, XPWeight weight, bool ignoreWeight, DateTime date) : this(description, value, weight, date)
         {
             IgnoreWeight = ignoreWeight;
+        }
+        public Insertion(string description, int value, XPWeight weight, bool ignoreWeight, DateTime date, int flatXP) : this(description, value, weight, date)
+        {
+            FlatXP = flatXP;
         }
 
         public override string ToString()

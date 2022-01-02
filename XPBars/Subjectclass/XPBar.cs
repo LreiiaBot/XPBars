@@ -104,6 +104,7 @@ namespace XPBars
                 //LastValueAdded = sb.ToString();
                 //await Task.Run(() => Thread.Sleep(400));
             }
+            insertion.FlatXP = sum;
             if (Parentbar != null)
             {
                 int valueToAdd = (int)Math.Round((double)sum / (double)Parentbar.Subbars.Count);
