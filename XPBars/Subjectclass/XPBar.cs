@@ -63,17 +63,11 @@ namespace XPBars
             int sum = 0;
             int newValue = 0;
 
-            int counter = 0;
             foreach (var value in values)
             {
-                counter++;
                 // For Desgin set value
                 sum += value;
                 LastValueAdded = $"+ {sum} (+{value})";
-                if (counter == values.Count)
-                {
-                    ResetLastValueAdded();
-                }
 
                 newValue = CurrentValue + value;
                 if (newValue >= MaxValue)
@@ -103,6 +97,7 @@ namespace XPBars
                 int valueToAdd = (int)Math.Round((double)sum / (double)Parentbar.Subbars.Count);
                 Parentbar.AddValue(new Insertion(insertion.Description.Trim(), valueToAdd, true));
             }
+            ResetLastValueAdded();
         }
 
         public async Task SlowlyIncreaseTo(int value)
