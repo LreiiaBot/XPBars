@@ -41,7 +41,7 @@
                         <Grid Grid.Row="1" HorizontalAlignment="Left">
                             <!--<ProgressBar x:Name="pbList" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="500" HorizontalAlignment="Stretch"/>-->
                             <local:XPBarControl x:Name="pbList" Level="{Binding Level}" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="550" HorizontalAlignment="Center" Background="#FFAAA9A9"/>
-                            <local:CustomTextBlockControl Level="{Binding Level}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold">
+                            <local:CustomTextBlockControl Level="{Binding Level}" CurrentValue="{Binding CurrentValue}" MaxValue="{Binding MaxValue}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold">
                                 <TextBlock.Text>
                                     <!--<MultiBinding StringFormat="{}UserLvl: {0}/{1}">-->
                                     <MultiBinding StringFormat="{}{0}/{1}">

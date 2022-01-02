@@ -58,19 +58,18 @@ namespace XPBars
             {
                 newValue = CurrentValue + value;
                 sum += value;
-                leftValue = 0;
                 if (newValue >= MaxValue)
                 {
                     while (newValue >= MaxValue)
                     {
-                        leftValue = newValue - MaxValue;
+                        newValue = newValue - MaxValue;
 
                         //shortly only for design
                         CurrentValue = MaxValue;
                         await Task.Run(() => Thread.Sleep(400));
 
                         Level++;
-                        CurrentValue = leftValue;
+                        CurrentValue = newValue;
                     }
                 }
                 else
