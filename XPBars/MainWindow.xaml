@@ -40,12 +40,12 @@
                         <TextBlock Text="{Binding Description}" HorizontalAlignment="Stretch" Grid.ColumnSpan="2"/>
                         <Grid Grid.Row="1" HorizontalAlignment="Left">
                             <!--<ProgressBar x:Name="pbList" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="500" HorizontalAlignment="Stretch"/>-->
-                            <local:XPBarControl x:Name="pbList" Level="{Binding Level}" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="550" HorizontalAlignment="Center" Background="#FFAAA9A9"/>
-                            <local:CustomTextBlockControl Level="{Binding Level}" CurrentValue="{Binding CurrentValue}" MaxValue="{Binding MaxValue}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold">
+                            <local:XPBarControl x:Name="pbList" Level="{Binding Level}" Value="{Binding CurrentValueDisplay}" Maximum="{Binding MaxValue}" Height="20" Width="550" HorizontalAlignment="Center" Background="#FFAAA9A9"/>
+                            <local:CustomTextBlockControl x:Name="tbList" Level="{Binding Level}" CurrentValue="{Binding CurrentValue}" MaxValue="{Binding MaxValue}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold">
                                 <TextBlock.Text>
                                     <!--<MultiBinding StringFormat="{}UserLvl: {0}/{1}">-->
                                     <MultiBinding StringFormat="{}{0}/{1}">
-                                        <Binding Path="Value" ElementName="pbList"/>
+                                        <Binding Path="CurrentValue"/>
                                         <Binding Path="Maximum" ElementName="pbList"/>
                                     </MultiBinding>
                                 </TextBlock.Text>

@@ -16,7 +16,15 @@ namespace XPBars
         public int CurrentValue // within the current level; DONT USE SETTER
         {
             get { return currentValue; }
-            set { currentValue = value; OnPropertyChanged(); }
+            set { currentValue = value; OnPropertyChanged(); CurrentValueDisplay = currentValue; }
+        }
+
+        private double currentValueDisplay;
+
+        public double CurrentValueDisplay
+        {
+            get { return currentValueDisplay; }
+            set { currentValueDisplay = value; OnPropertyChanged(); }
         }
 
         private int maxValue;

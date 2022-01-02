@@ -83,16 +83,17 @@ namespace XPBars
                         newValue = newValue - MaxValue;
 
                         //shortly only for design
-                        CurrentValue = MaxValue;
+                        await Task.Run(() => SlowlyIncreaseTo(MaxValue));
                         await Task.Run(() => Thread.Sleep(800));
 
                         Level++;
-                        CurrentValue = newValue;
+                        CurrentValue = 0;
+                        await Task.Run(() => SlowlyIncreaseTo(newValue));
                     }
                 }
                 else
                 {
-                    CurrentValue = newValue;
+                    await Task.Run(() => SlowlyIncreaseTo(newValue));
                 }
                 await Task.Run(() => Thread.Sleep(1200));
                 //StringBuilder sb = new StringBuilder();
@@ -110,6 +111,19 @@ namespace XPBars
                 int valueToAdd = (int)Math.Round((double)sum / (double)Parentbar.Subbars.Count);
                 Parentbar.AddValue(new Insertion(insertion.Description.Trim(), valueToAdd, true));
             }
+        }
+
+        public async Task SlowlyIncreaseTo(int value)
+        {
+            int steps = 500;
+            double increase = ((double)value - (double)CurrentValue) / (double)steps;
+            for (int i = 0; i < steps - 1; i++)
+            {
+                CurrentValueDisplay += increase;
+                await Task.Run(() => Thread.Sleep(1));
+            }
+            //CurrentValueDisplay = value;
+            CurrentValue = value;
         }
 
         public async void ResetLastValueAdded()
