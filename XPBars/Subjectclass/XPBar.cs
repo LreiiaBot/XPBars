@@ -84,26 +84,18 @@ namespace XPBars
 
                         //shortly only for design
                         await Task.Run(() => SlowlyIncreaseTo(MaxValue));
-                        await Task.Run(() => Thread.Sleep(800));
+                        await Task.Run(() => Thread.Sleep(100));
 
                         Level++;
                         CurrentValue = 0;
-                        await Task.Run(() => SlowlyIncreaseTo(newValue));
                     }
+                    await Task.Run(() => SlowlyIncreaseTo(newValue));
                 }
                 else
                 {
                     await Task.Run(() => SlowlyIncreaseTo(newValue));
                 }
-                await Task.Run(() => Thread.Sleep(1200));
-                //StringBuilder sb = new StringBuilder();
-                //for (int i = 0; i < LastValueAdded.Length + 5; i++)
-                //{
-                //    // unbreakable Space
-                //    sb.Append("\u00A0");
-                //}
-                //LastValueAdded = sb.ToString();
-                //await Task.Run(() => Thread.Sleep(400));
+                await Task.Run(() => Thread.Sleep(1000));
             }
             insertion.FlatXP = sum;
             if (Parentbar != null)
@@ -115,7 +107,8 @@ namespace XPBars
 
         public async Task SlowlyIncreaseTo(int value)
         {
-            int steps = 500;
+            int steps = 400;
+            steps = 200 + (int)(((double)value - (double)CurrentValue) / MaxValue * 1500);
             double increase = ((double)value - (double)CurrentValue) / (double)steps;
             for (int i = 0; i < steps - 1; i++)
             {
@@ -128,7 +121,7 @@ namespace XPBars
 
         public async void ResetLastValueAdded()
         {
-            await Task.Run(() => Thread.Sleep(2500));
+            await Task.Run(() => Thread.Sleep(4500));
             LastValueAdded = String.Empty;
         }
 
