@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,6 +26,15 @@ namespace XPBars
             get { return subbars; }
             set { subbars = value; OnPropertyChanged(); }
         }
+
+        private string lastValueAdded;
+
+        public string LastValueAdded
+        {
+            get { return lastValueAdded; }
+            set { lastValueAdded = value; OnPropertyChanged(); }
+        }
+
 
         #endregion
 
@@ -52,12 +62,20 @@ namespace XPBars
             List<int> values = OrbsToValues(insertion);
             int sum = 0;
             int newValue = 0;
-            int leftValue = 0;
 
+            int counter = 0;
             foreach (var value in values)
             {
-                newValue = CurrentValue + value;
+                counter++;
+                // For Desgin set value
                 sum += value;
+                LastValueAdded = $"+ {sum} (+{value})";
+                if (counter == values.Count)
+                {
+                    ResetLastValueAdded();
+                }
+
+                newValue = CurrentValue + value;
                 if (newValue >= MaxValue)
                 {
                     while (newValue >= MaxValue)
@@ -66,7 +84,7 @@ namespace XPBars
 
                         //shortly only for design
                         CurrentValue = MaxValue;
-                        await Task.Run(() => Thread.Sleep(400));
+                        await Task.Run(() => Thread.Sleep(800));
 
                         Level++;
                         CurrentValue = newValue;
@@ -76,13 +94,27 @@ namespace XPBars
                 {
                     CurrentValue = newValue;
                 }
-                await Task.Run(() => Thread.Sleep(600));
+                await Task.Run(() => Thread.Sleep(1200));
+                //StringBuilder sb = new StringBuilder();
+                //for (int i = 0; i < LastValueAdded.Length + 5; i++)
+                //{
+                //    // unbreakable Space
+                //    sb.Append("\u00A0");
+                //}
+                //LastValueAdded = sb.ToString();
+                //await Task.Run(() => Thread.Sleep(400));
             }
             if (Parentbar != null)
             {
                 int valueToAdd = (int)Math.Round((double)sum / (double)Parentbar.Subbars.Count);
                 Parentbar.AddValue(new Insertion(insertion.Description.Trim(), valueToAdd, true));
             }
+        }
+
+        public async void ResetLastValueAdded()
+        {
+            await Task.Run(() => Thread.Sleep(2500));
+            LastValueAdded = String.Empty;
         }
 
         public static void Save(IEnumerable<XPBar> xpbars)

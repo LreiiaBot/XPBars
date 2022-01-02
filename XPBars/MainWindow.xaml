@@ -52,6 +52,7 @@
                             </local:CustomTextBlockControl>
                         </Grid>
                         <TextBlock Text="{Binding Level}" Grid.Row="1" Grid.Column="1" Padding="5" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding LastValueAdded}" Grid.Row="1" Grid.Column="2" Padding="5" HorizontalAlignment="Left"/>
                         <local:CustomGridControl Grid.Row="2" Grid.ColumnSpan="3" Selected="{Binding Selected}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
