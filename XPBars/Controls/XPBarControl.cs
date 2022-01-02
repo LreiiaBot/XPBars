@@ -16,22 +16,44 @@ namespace XPBars
     {
         public static readonly DependencyProperty LevelDependencyProperty = DependencyProperty.Register("Level", typeof(int), typeof(XPBarControl), new FrameworkPropertyMetadata(0, new PropertyChangedCallback(LevelPropertyChanged)));
 
-
         public int Level
         {
             get { return (int)GetValue(LevelDependencyProperty); }
             set { SetValue(LevelDependencyProperty, value); }
         }
 
+        public static readonly DependencyProperty FreezeDependencyProperty = DependencyProperty.Register("Freeze", typeof(bool), typeof(XPBarControl), new FrameworkPropertyMetadata(false, new PropertyChangedCallback(FreezePropertyChanged)));
+
+        public bool Freeze
+        {
+            get { return (bool)GetValue(FreezeDependencyProperty); }
+            set { SetValue(FreezeDependencyProperty, value); }
+        }
+        static void FreezePropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
+        {
+            LevelPropertyChanged(sender, args);
+        }
+
         static void LevelPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
             XPBarControl xpBar = (XPBarControl)sender;
-            int newValue = (int)args.NewValue;
+            int newValue = xpBar.Level;
             int red = 40;
             int green = 120 + newValue * 4;
             int blue = 80;
 
-            if (newValue < 50)
+            if (xpBar.Freeze)
+            {
+                // blue
+                red = 190;
+                green = 200;
+                blue = 250;
+
+                //red = 0;
+                //green = 190;
+                //blue = 255;
+            }
+            else if (newValue < 50)
             {
                 red = 5 + 5 * newValue;
                 //green = 155 + 2 * newValue;

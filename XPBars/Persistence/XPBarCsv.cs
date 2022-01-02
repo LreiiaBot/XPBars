@@ -106,13 +106,13 @@ namespace XPBars
         {
             string[] fields = csv.Split(Separator);
             XPBar xpbar = null;
-            xpbar = new XPBar(fields[0], Convert.ToInt32(fields[1]), Convert.ToInt32(fields[2]), Convert.ToBoolean(fields[3]));
+            xpbar = new XPBar(fields[0], Convert.ToInt32(fields[1]), Convert.ToInt32(fields[2]), Convert.ToBoolean(fields[3]), Convert.ToBoolean(fields[4]));
 
             return xpbar;
         }
         public static string FromBarToCsv(XPBar xpbar)
         {
-            return $"{xpbar.Description}{Separator}{xpbar.CurrentValue}{Separator}{xpbar.Level}{Separator}{xpbar.Done}";
+            return $"{xpbar.Description}{Separator}{xpbar.CurrentValue}{Separator}{xpbar.Level}{Separator}{xpbar.Done}{Separator}{xpbar.Freezed}";
         }
     }
 }

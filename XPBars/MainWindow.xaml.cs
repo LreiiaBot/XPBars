@@ -112,5 +112,13 @@ namespace XPBars
                 Mvm.DeleteBar();
             }
         }
+        private void BtnFreeze(object sender, RoutedEventArgs e)
+        {
+            if (Mvm.SelectedXPBar == null)
+            {
+                return;
+            }
+            Mvm.ChangeFreezeState();
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XPBars"
         mc:Ignorable="d"
-        Title="Realife XP" Height="450" Width="800"
+        Title="Realife XP" Height="450" Width="890"
         Style="{StaticResource CustomWindowStyle}" Closing="Window_Closing">
     <Grid DataContext="{StaticResource mvm}" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
@@ -22,13 +22,13 @@
             <Button Width="50" FontSize="15" Margin="5" Content="x-1" Click="BtnOrderN1"/>
             <Button Width="60" FontSize="15" Margin="5" Content="Expand" Click="BtnExpand"/>
             <Button Width="40" FontSize="15" Margin="5" Content="🗑" Click="BtnDel" x:Name="btnBin"/>
-            <Button Width="40" FontSize="15" Margin="5" Content="❄" Click="BtnDel" x:Name="btnFreeze"/>
+            <Button Width="40" FontSize="15" Margin="5" Content="❄" Click="BtnFreeze" x:Name="btnFreeze"/>
         </StackPanel>
         <TreeView x:Name="tvXPBars" Grid.Row="1" Margin="5" ItemsSource="{Binding LXPBars}" VerticalAlignment="Stretch" SelectedItemChanged="TreeView_SelectedItemChanged">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Subbars}">
                     <!--<Border Margin="3" BorderThickness="1" CornerRadius="3" Width="400" Height="50">-->
-                    <Grid HorizontalAlignment="Stretch" Margin="3">
+                    <Grid HorizontalAlignment="Stretch" Margin="3" ToolTip="{Binding Description}" Opacity="{Binding Opacity}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="auto"/>
@@ -42,7 +42,7 @@
                         <TextBlock Text="{Binding Description}" HorizontalAlignment="Stretch" Grid.ColumnSpan="2"/>
                         <Grid Grid.Row="1" HorizontalAlignment="Left">
                             <!--<ProgressBar x:Name="pbList" Value="{Binding CurrentValue}" Maximum="{Binding MaxValue}" Height="20" Width="500" HorizontalAlignment="Stretch"/>-->
-                            <local:XPBarControl x:Name="pbList" Level="{Binding Level}" Value="{Binding CurrentValueDisplay}" Maximum="{Binding MaxValue}" Height="20" Width="550" HorizontalAlignment="Center" Background="#FFAAA9A9"/>
+                            <local:XPBarControl x:Name="pbList" Level="{Binding Level}" Value="{Binding CurrentValueDisplay}" Maximum="{Binding MaxValue}" Freeze="{Binding Freezed}" Height="20" Width="550" HorizontalAlignment="Center" Background="#FFAAA9A9"/>
                             <local:CustomTextBlockControl x:Name="tbList" Level="{Binding Level}" CurrentValue="{Binding CurrentValue}" MaxValue="{Binding MaxValue}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold">
                                 <TextBlock.Text>
                                     <!--<MultiBinding StringFormat="{}UserLvl: {0}/{1}">-->
@@ -66,15 +66,15 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox x:Name="tbCount" Text="{Binding Insert.Value, UpdateSourceTrigger=PropertyChanged}" KeyDown="TBAddInsertion" Width="50" TextAlignment="Center" VerticalContentAlignment="Center"/>
-                            <ComboBox Name="cbWeight" SelectedValue="{Binding Insert.Weight}" Width="100" Grid.Column="1"/>
-                            <TextBox x:Name="tbDescription" Text="{Binding Insert.Description, UpdateSourceTrigger=PropertyChanged}" KeyDown="TBAddInsertion" Grid.Column="2" VerticalContentAlignment="Center">
+                            <TextBox x:Name="tbCount" IsReadOnly="{Binding Freezed}" IsEnabled="{Binding Active}" Text="{Binding Insert.Value, UpdateSourceTrigger=PropertyChanged}" KeyDown="TBAddInsertion" Width="50" TextAlignment="Center" VerticalContentAlignment="Center"/>
+                            <ComboBox Name="cbWeight" IsReadOnly="{Binding Freezed}" IsEnabled="{Binding Active}" SelectedValue="{Binding Insert.Weight}" Width="100" Grid.Column="1"/>
+                            <TextBox x:Name="tbDescription" IsReadOnly="{Binding Freezed}" IsEnabled="{Binding Active}" Text="{Binding Insert.Description, UpdateSourceTrigger=PropertyChanged}" KeyDown="TBAddInsertion" Grid.Column="2" VerticalContentAlignment="Center">
                                 <!--<TextBox.InputBindings>
                                     <KeyBinding Key="Execute" Command="{Binding EnterKeyCommand}"/>
                                     <KeyBinding Key="Enter" Command="{Binding EnterKeyCommand}"/>
                                 </TextBox.InputBindings>-->
                             </TextBox>
-                            <Button Content="+" x:Name="btnAdd" Grid.Column="3" Width="80" Click="Button_Click"/>
+                            <Button Content="+" x:Name="btnAdd" IsEnabled="{Binding Active}" Grid.Column="3" Width="80" Click="Button_Click"/>
                             <Expander Header="Protocol" Grid.Row="1" Grid.ColumnSpan="5">
                                 <ListView ItemsSource="{Binding Protocol}">
                                     <ListView.View>

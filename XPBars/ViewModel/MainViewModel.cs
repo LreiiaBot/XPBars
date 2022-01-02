@@ -37,6 +37,7 @@ namespace XPBars
         public MainViewModel()
         {
             LXPBars.Add(XPBar.Read());
+            OrderAllAZ();
         }
 
         public void AddOrbs()
@@ -125,10 +126,14 @@ namespace XPBars
         {
             OrderSubbarsN1(LXPBars[0]);
         }
+        public void OrderAllFrozen()
+        {
+            OrderSubbarsFrozen(LXPBars[0]);
+        }
 
         public void OrderSubbarsAZ(XPBar xpbar)
         {
-            xpbar.Subbars = xpbar.Subbars.OrderBy(bar => bar.Description).ThenBy(bar => bar.Level).ThenBy(bar => bar.CurrentValue).Convert();
+            xpbar.Subbars = xpbar.Subbars.OrderBy(bar => bar.Freezed).ThenBy(bar => bar.Description).ThenBy(bar => bar.Level).ThenBy(bar => bar.CurrentValue).Convert();
             foreach (var subbar in xpbar.Subbars)
             {
                 OrderSubbarsAZ(subbar);
@@ -136,7 +141,7 @@ namespace XPBars
         }
         public void OrderSubbarsZA(XPBar xpbar)
         {
-            xpbar.Subbars = xpbar.Subbars.OrderByDescending(bar => bar.Description).ThenBy(bar => bar.Level).ThenBy(bar => bar.CurrentValue).Convert();
+            xpbar.Subbars = xpbar.Subbars.OrderBy(bar => bar.Freezed).ThenByDescending(bar => bar.Description).ThenBy(bar => bar.Level).ThenBy(bar => bar.CurrentValue).Convert();
             foreach (var subbar in xpbar.Subbars)
             {
                 OrderSubbarsZA(subbar);
@@ -144,7 +149,7 @@ namespace XPBars
         }
         public void OrderSubbars1N(XPBar xpbar)
         {
-            xpbar.Subbars = xpbar.Subbars.OrderBy(bar => bar.Level).ThenBy(bar => bar.CurrentValue).ThenBy(bar => bar.Description).Convert();
+            xpbar.Subbars = xpbar.Subbars.OrderBy(bar => bar.Freezed).ThenBy(bar => bar.Level).ThenBy(bar => bar.CurrentValue).ThenBy(bar => bar.Description).Convert();
             foreach (var subbar in xpbar.Subbars)
             {
                 OrderSubbars1N(subbar);
@@ -152,10 +157,52 @@ namespace XPBars
         }
         public void OrderSubbarsN1(XPBar xpbar)
         {
-            xpbar.Subbars = xpbar.Subbars.OrderByDescending(bar => bar.Level).ThenByDescending(bar => bar.CurrentValue).ThenBy(bar => bar.Description).Convert();
+            xpbar.Subbars = xpbar.Subbars.OrderBy(bar => bar.Freezed).ThenByDescending(bar => bar.Level).ThenByDescending(bar => bar.CurrentValue).ThenBy(bar => bar.Description).Convert();
             foreach (var subbar in xpbar.Subbars)
             {
                 OrderSubbarsN1(subbar);
+            }
+        }
+        public void OrderSubbarsFrozen(XPBar xpbar)
+        {
+            xpbar.Subbars = xpbar.Subbars.OrderBy(bar => bar.Freezed).Convert();
+            foreach (var subbar in xpbar.Subbars)
+            {
+                OrderSubbarsN1(subbar);
+            }
+        }
+
+        public void ChangeFreezeState()
+        {
+            if (SelectedXPBar == null)
+            {
+                return;
+            }
+            // when parent is frozen cant unfreeze
+            if (SelectedXPBar.Parentbar != null && SelectedXPBar.Parentbar.Freezed)
+            {
+                return;
+            }
+            SelectedXPBar.Freezed = !SelectedXPBar.Freezed;
+            if (SelectedXPBar.PersistenceAction != PersistenceAction.Insert)
+            {
+                SelectedXPBar.PersistenceAction = PersistenceAction.Update;
+            }
+            FreezeSubBars(SelectedXPBar);
+
+            OrderAllAZ();
+        }
+
+        public void FreezeSubBars(XPBar xpbar)
+        {
+            foreach (var subbar in xpbar.Subbars)
+            {
+                subbar.Freezed = !subbar.Freezed;
+                if (SelectedXPBar.PersistenceAction != PersistenceAction.Insert)
+                {
+                    SelectedXPBar.PersistenceAction = PersistenceAction.Update;
+                }
+                FreezeSubBars(subbar);
             }
         }
     }

@@ -86,6 +86,26 @@ namespace XPBars
 
         public PersistenceAction PersistenceAction { get; set; } = PersistenceAction.None;
 
+        private bool freezed;
+
+        public bool Freezed
+        {
+            get { return freezed; }
+            set { freezed = value; OnPropertyChanged(); OnPropertyChanged("Active"); OnPropertyChanged("Opacity"); }
+        }
+
+        public bool Active
+        {
+            get { return !freezed; }
+            set { freezed = !value; OnPropertyChanged(); OnPropertyChanged("Freezed"); OnPropertyChanged("Opacity"); }
+        }
+
+        public double Opacity
+        {
+            get { return Freezed ? 0.6 : 1; }
+            set { OnPropertyChanged(); }
+        }
+
         #endregion
 
 
