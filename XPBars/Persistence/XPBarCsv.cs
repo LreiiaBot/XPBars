@@ -19,6 +19,10 @@ namespace XPBars
             }
             XPBar xpbar = null;
             xpbar = ReadDirs(Basedir, xpbar);
+            if (xpbar == null)
+            {
+                return new XPBar("Master") { PersistenceAction = PersistenceAction.Insert };
+            }
             return xpbar;
         }
         public static XPBar ReadDirs(string parentDir, XPBar parent)

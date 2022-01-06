@@ -36,6 +36,12 @@ namespace XPBars
 
         public MainViewModel()
         {
+            Read();
+        }
+
+        public void Read()
+        {
+            LXPBars.Clear();
             LXPBars.Add(XPBar.Read());
             OrderAllAZ();
         }
@@ -92,7 +98,12 @@ namespace XPBars
 
         public void DeleteBar()
         {
-            if (selectedXPBar.PersistenceAction == PersistenceAction.Insert)
+            // Top bar? -Y cant delete
+            if (SelectedXPBar.Parentbar == null)
+            {
+                return;
+            }
+            if (SelectedXPBar.PersistenceAction == PersistenceAction.Insert)
             {
                 SelectedXPBar.PersistenceAction = PersistenceAction.NoneCascade;
             }
@@ -102,7 +113,7 @@ namespace XPBars
             }
             Save();
             LXPBars.Clear();
-            LXPBars.Add(XPBar.Read());
+            Read();
         }
 
         public void Save()
@@ -198,9 +209,9 @@ namespace XPBars
             foreach (var subbar in xpbar.Subbars)
             {
                 subbar.Freezed = xpbar.Freezed;
-                if (SelectedXPBar.PersistenceAction != PersistenceAction.Insert)
+                if (subbar.PersistenceAction != PersistenceAction.Insert)
                 {
-                    SelectedXPBar.PersistenceAction = PersistenceAction.Update;
+                    subbar.PersistenceAction = PersistenceAction.Update;
                 }
                 FreezeSubBars(subbar);
             }

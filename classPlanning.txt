@@ -77,3 +77,9 @@ ab 4600 schrift schwarz (level dings) -> also farbe wie hintergrund ungefähr
 	
 xpbar filling (not directly bam but increase animation)
 
+
+first read protocol on expansion? -> read async maybe? not necessary
+	maybe comes in handy when a large number of protocols are there
+	-> other idea: last x (100 maybe)
+	button to load all
+	
