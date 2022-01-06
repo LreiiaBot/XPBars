@@ -98,7 +98,7 @@ namespace XPBars
 
         public void DeleteBar()
         {
-            // Top bar? -Y cant delete
+            // Top bar? -> cant delete
             if (SelectedXPBar.Parentbar == null)
             {
                 return;
