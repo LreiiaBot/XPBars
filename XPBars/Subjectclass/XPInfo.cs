@@ -35,6 +35,14 @@ namespace XPBars
             set { maxValue = value; OnPropertyChanged(); }
         }
 
+        private int rest;
+
+        public int Rest
+        {
+            get { return rest; }
+            set { rest = value; OnPropertyChanged(); }
+        }
+
         private string description;
 
         public string Description

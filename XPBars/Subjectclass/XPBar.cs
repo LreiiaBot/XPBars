@@ -51,9 +51,10 @@ namespace XPBars
         /// <summary>
         /// constructor necessary for reading of file
         /// </summary>
-        public XPBar(string description, int currentValue, int level, bool done, bool frozen) : base(description, currentValue, level, done)
+        public XPBar(string description, int currentValue, int level, bool done, bool frozen, int rest) : base(description, currentValue, level, done)
         {
             Freezed = frozen;
+            Rest = rest;
         }
         public async void AddValue(Insertion insertion)
         {
@@ -99,7 +100,10 @@ namespace XPBars
                 {
                     Parentbar.PersistenceAction = PersistenceAction.Update;
                 }
-                int valueToAdd = (int)Math.Round((double)sum / (double)Parentbar.Subbars.Count);
+                Parentbar.Rest = Parentbar.Rest + sum;
+                int valueToAdd = Parentbar.Rest / Parentbar.Subbars.Count;
+                int rest = Parentbar.Rest % Parentbar.Subbars.Count;
+                Parentbar.Rest = rest;
                 Parentbar.AddValue(new Insertion(insertion.Description.Trim(), valueToAdd, true));
             }
             ResetLastValueAdded();
