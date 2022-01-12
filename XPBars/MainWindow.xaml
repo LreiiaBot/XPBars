@@ -16,13 +16,13 @@
             <TextBlock Width="90" FontSize="18" Text="Listname" VerticalAlignment="Center"/>
             <TextBox Width="260" FontSize="15" Margin="10 5 0 5" VerticalAlignment="Center" KeyDown="TBAddList" Height="30" Text="{Binding Barname, UpdateSourceTrigger=PropertyChanged}" x:Name="tbBarname"/>
             <Button Width="80" FontSize="15" Margin="5 5 20 5" Content="+" Click="BtnAddList"/>
-            <Button Width="50" FontSize="15" Margin="5" Content="A-Z" Click="BtnOrderAZ"/>
-            <Button Width="50" FontSize="15" Margin="5" Content="Z-A" Click="BtnOrderZA"/>
-            <Button Width="50" FontSize="15" Margin="5" Content="1-x" Click="BtnOrder1N"/>
-            <Button Width="50" FontSize="15" Margin="5" Content="x-1" Click="BtnOrderN1"/>
+            <Button Width="50" FontSize="15" Margin="5" Content="&#xf15d;" FontFamily="{StaticResource FontAwesome}" Click="BtnOrderAZ"/>
+            <Button Width="50" FontSize="15" Margin="5" Content="&#xf15e;" FontFamily="{StaticResource FontAwesome}" Click="BtnOrderZA"/>
+            <Button Width="50" FontSize="15" Margin="5" Content="&#xf885;" FontFamily="{StaticResource FontAwesome}" Click="BtnOrder1N"/>
+            <Button Width="50" FontSize="15" Margin="5" Content="&#xf160;" FontFamily="{StaticResource FontAwesome}" Click="BtnOrderN1"/>
             <Button Width="60" FontSize="15" Margin="5" Content="Expand" Click="BtnExpand"/>
-            <Button Width="40" FontSize="15" Margin="5" Content="🗑" Click="BtnDel" x:Name="btnBin"/>
-            <Button Width="40" FontSize="15" Margin="5" Content="❄" Click="BtnFreeze" x:Name="btnFreeze"/>
+            <Button Width="40" FontSize="15" Margin="5" Content="&#xf2ed;" FontFamily="{StaticResource FontAwesome}" Click="BtnDel" x:Name="btnBin"/>
+            <Button Width="40" FontSize="15" Margin="5" Content="&#xf2dc;" FontFamily="{StaticResource FontAwesome}" Click="BtnFreeze" x:Name="btnFreeze"/>
         </StackPanel>
         <TreeView x:Name="tvXPBars" Grid.Row="1" Margin="5" ItemsSource="{Binding LXPBars}" VerticalAlignment="Stretch" SelectedItemChanged="TreeView_SelectedItemChanged">
             <TreeView.ItemTemplate>

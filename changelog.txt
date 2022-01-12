@@ -12,3 +12,22 @@ editable/enabled
 vielleicht
 farben in einstellungen anpassbar
 
+___
+
+rest value on bar
+when bar gets value -> add rest to rest of parent bar
+when parnet bar rest >= count( subbars ) -> add 1 xp
+-> div + modulo
+
+___
+
+different icons based on master bar xp
+
+___
+
+expander / disexpand? / comprimise
+-> "close" all (except last?)
+
+___
+
+order -> open ones stay opnened; closed ones get closed

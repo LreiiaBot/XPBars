@@ -19,6 +19,9 @@ namespace XPBars
 
             //btnBin.Content = "\u047C";
             //btnBin.Content = "⌛";
+
+            //btnFreeze.Content = "&#xf06d;";
+            //btnFreeze.Content = "&#xf46a;";
         }
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)

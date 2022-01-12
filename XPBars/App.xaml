@@ -6,6 +6,11 @@
     <Application.Resources>
         <ResourceDictionary>
             <local:MainViewModel x:Key="mvm"/>
+            <!--<FontFamily x:Key="FontAwesome">/fonts/fontawesome-webfont.ttf#FontAwesome</FontFamily>-->
+            <!--<FontFamily x:Key="FontAwesome">/fonts/fontawesome-webfont.ttf#FontAwesome</FontFamily>-->
+
+            <FontFamily x:Key="FontAwesome">/fonts/Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid</FontFamily>
+            <!--<FontFamily x:Key="FontAwesome">/fonts/Font Awesome 5 Free-Regular-400.otf#Font Awesome 5 Free Regular</FontFamily>-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Themes/ColourfulDarkTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
