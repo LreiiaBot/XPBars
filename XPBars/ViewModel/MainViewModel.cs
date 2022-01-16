@@ -58,7 +58,7 @@ namespace XPBars
                 return;
             }
             // check if name contains illeagl chars
-            if (Regex.IsMatch(insertHlp.Description, "[;]"))
+            if (insertHlp.Description.ContainsChar(";"))
             {
                 return;
             }
@@ -89,7 +89,7 @@ namespace XPBars
                 return;
             }
             // check if name contains illeagl chars
-            if (Regex.IsMatch(Barname, "[;/\\:?\"<>|]"))
+            if (Barname.ContainsChar("[;/\\:?\"<>|]"))
             {
                 return;
             }

@@ -14,5 +14,20 @@ namespace XPBars
         {
             return new ObservableCollection<T>(original);
         }
+
+        public static bool ContainsChar(this string sequence, string characters)
+        {
+            bool contains = false;
+
+            foreach (var character in characters)
+            {
+                if (sequence.Contains(character))
+                {
+                    contains = true;
+                    break;
+                }
+            }
+            return contains;
+        }
     }
 }
