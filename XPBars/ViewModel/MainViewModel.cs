@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace XPBars
 {
@@ -56,6 +57,11 @@ namespace XPBars
             {
                 return;
             }
+            // check if name contains illeagl chars
+            if (Regex.IsMatch(insertHlp.Description, "[;]"))
+            {
+                return;
+            }
             else if (String.IsNullOrWhiteSpace(insertHlp.Description))
             {
                 return;
@@ -79,6 +85,11 @@ namespace XPBars
                 return;
             }
             if (Barname.Trim().StartsWith("deleted_"))
+            {
+                return;
+            }
+            // check if name contains illeagl chars
+            if (Regex.IsMatch(Barname, "[;/\\:?\"<>|]"))
             {
                 return;
             }

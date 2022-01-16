@@ -31,3 +31,19 @@ expander / disexpand? / comprimise
 ___
 
 order -> open ones stay opnened; closed ones get closed
+
+___
+
+rename xpbars
+	-> input new name not clear
+	;
+	
+___
+
+input barname dont allow ; , folder illeagl chars
+
+input isnertion dont allow ;
+
+___
+
+regex bug / still works todo (check regex wildcards)

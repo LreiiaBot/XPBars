@@ -28,7 +28,7 @@
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Subbars}">
                     <!--<Border Margin="3" BorderThickness="1" CornerRadius="3" Width="400" Height="50">-->
-                    <Grid HorizontalAlignment="Stretch" Margin="3" ToolTip="{Binding Description}" Opacity="{Binding Opacity}">
+                    <Grid HorizontalAlignment="Stretch" Margin="3" Opacity="{Binding Opacity}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="auto"/>
