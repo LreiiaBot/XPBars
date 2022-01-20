@@ -59,7 +59,7 @@ namespace XPBars
         public async void AddValue(Insertion insertion)
         {
             insertion.Date = DateTime.Now;
-            Protocol.Add(insertion);
+            Protocol.Insert(0, insertion);
             insertion.PersistenceAction = PersistenceAction.Insert;
             List<int> values = OrbsToValues(insertion);
             int sum = 0;

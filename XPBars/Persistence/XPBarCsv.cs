@@ -48,7 +48,7 @@ namespace XPBars
                     thisDir = Path.Combine(parentDir, xpbar.Description);
                 }
                 // read protocol
-                xpbar.Protocol = InsertionCsv.Read(xpbar).Convert();
+                xpbar.Protocol = InsertionCsv.Read(xpbar).OrderByDescending(insertion => insertion.Date).Convert();
                 ReadDirs(thisDir, xpbar);
             }
             return xpbar;
